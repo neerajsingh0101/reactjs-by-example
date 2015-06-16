@@ -26,7 +26,7 @@ var EmailPreferencesForm = React.createClass({
             <option value="allActivity">On all Activity</option>
           </select><br/>
 
-          <button type="submit" value="Submit" style={submitStyle}>Submit
+          <button type="submit" value="Save" style={submitStyle}>Save
           </button>
         </form>
       </div>);

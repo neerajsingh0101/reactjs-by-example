@@ -16,7 +16,7 @@ var PersonalDetailsForm = React.createClass({
                  placeholder="Last Name" style={inputStyle}/> <br/>
           <input type="number" ref='age' name="age" placeholder="Age"
                  style={inputStyle}/> <br/>
-          <button type="submit" value="Submit" style={submitStyle}>Submit
+          <button type="submit" value="Save" style={submitStyle}>Save
           </button>
         </form>
       </div>);
