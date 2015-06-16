@@ -1,26 +1,49 @@
 import React, { Component } from 'react';
 import PersonalDetailsForm from './PersonalDetailsForm';
+import EmailPreferencesForm from './EmailPreferencesForm';
+import SuccessDetails from './SuccessDetails';
 
+import "babel-core/polyfill";
 var App = React.createClass({
-    render () {
-        var containerStyle = {
-            textAlign: 'center'
-        };
 
-        return (
-            <div id='main-container' style={containerStyle}>
-                <h1>User Registration</h1>
-                <PersonalDetailsForm handleSubmit={this.handleSubmit}>
-                </PersonalDetailsForm>
-            </div>
-        );
-    },
-    handleSubmit (event){
-        console.log(event);
-        console.log(event.target);
-        alert('Submit!');
-        event.preventDefault();
+  getInitialState(){
+    return {currentStep: 1, formValues: {}}
+  },
+
+  render () {
+    var containerStyle = {
+      textAlign: 'center'
+    };
+
+    return (
+      <div id='main-container' style={containerStyle}>
+        {this.renderForm()}
+      </div>
+    );
+  },
+
+  renderForm(){
+    switch (this.state.currentStep) {
+      case 1:
+        return <PersonalDetailsForm ref='personal_details_form'
+                                    saveAndProceed={this.saveAndProceed}/>;
+      case 2:
+        return <EmailPreferencesForm ref='email_preferences_form'
+                                     saveAndProceed={this.saveAndProceed}/>;
+      case 3:
+        return <SuccessDetails ref='success_details' formValues={this.state.formValues}/>;
+
+      default:
+        return <PersonalDetailsForm ref='personal_details_form'
+                                    saveAndProceed={this.saveAndProceed}/>;
     }
+  },
+  saveAndProceed(fieldValues){
+    var formValues = Object.assign({}, this.state.formValues, fieldValues);
+    var nextStep = this.state.currentStep + 1;
+    console.log({currentStep: nextStep, formValues: formValues})
+    this.setState({currentStep: nextStep, formValues: formValues});
+  }
 
 });
 
