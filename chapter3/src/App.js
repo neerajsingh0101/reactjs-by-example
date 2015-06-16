@@ -16,6 +16,8 @@ var App = React.createClass({
         );
     },
     handleSubmit (event){
+        console.log(event);
+        console.log(event.target);
         alert('Submit!');
         event.preventDefault();
     }
