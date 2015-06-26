@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 var BookList = React.createClass({
   getInitialState() {
@@ -82,7 +82,6 @@ var BookStore = React.createClass({
     var formValues = Object.assign({}, this.state.formValues, formData);
     var nextStep = this.state.currentStep + 1;
     this.setState({currentStep: nextStep, formValues: formValues});
-    console.log(formData);
   },
 
   render() {
