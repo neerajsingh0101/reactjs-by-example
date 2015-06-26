@@ -39,12 +39,10 @@ var BookList = React.createClass({
     this.setState({selectedBooks: selectedBooks });
   },
 
-  var BookList = React.createClass({
   handleSubmit(event) {
     event.preventDefault();
     this.props.updateFormData({ selectedBooks: this.state.selectedBooks });
-  }
-  })
+  },
 
   render() {
     return (
