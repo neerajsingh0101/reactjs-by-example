@@ -1,12 +1,19 @@
 import React from 'react';
+import SetIntervalMixin from './mixins/set_interval_mixin'
+import CartTimeoutMixin from './mixins/cart_timeout_mixin'
 
 var ShippingDetails = React.createClass({
-  getInitialState() {
-    return (
-    { fullName: '', contactNumber: '', shippingAddress: '', error: false }
-    );
+  propTypes: {
+    alertCartTimeout:React.PropTypes.func.isRequired,
+    updateCartTimeout: React.PropTypes.func.isRequired,
+    cartTimeout: React.PropTypes.number.isRequired
   },
 
+  mixins: [SetIntervalMixin, CartTimeoutMixin],
+
+  getInitialState() {
+    return {fullName: '', contactNumber: '', shippingAddress: '', error: false, cartTimeout: this.props.cartTimeout};
+  },
   _renderError() {
     if (this.state.error) {
       return (
@@ -52,6 +59,8 @@ var ShippingDetails = React.createClass({
 
   render() {
     var errorMessage = this._renderError();
+    var minutes = Math.floor(this.state.cartTimeout / 60);
+    var seconds = this.state.cartTimeout - minutes * 60;
 
     return (
       <div>
@@ -91,6 +100,9 @@ var ShippingDetails = React.createClass({
               </button>
             </div>
           </form>
+        </div>
+        <div className='well'>
+          <span className="glyphicon glyphicon-time" aria-hidden="true"></span> You have {minutes} Minutes, {seconds} Seconds, before confirming order
         </div>
       </div>
     );
