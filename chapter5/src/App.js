@@ -1,14 +1,18 @@
+require("jquery");
+require("bootstrap");
+require("bootstrap-webpack");
 import React from 'react';
 import BookList from './booklist';
 import ShippingDetails from './shipping_details';
 import DeliveryDetails from './delivery_details';
 import Confirmation from './confirmation';
 import Success from './success';
+import ModalAlertTimeout from './modals/modal_alert_timeout'
 import "babel-core/polyfill";
 
 var BookStore = React.createClass({
   getInitialState() {
-    return ({currentStep: 1, formValues: {}, cartTimeout: 60 * 5});
+    return ({currentStep: 1, formValues: {}, cartTimeout: 1});
   },
 
   updateCartTimeout(timeout){
@@ -22,8 +26,8 @@ var BookStore = React.createClass({
   },
 
   alertCartTimeout(){
-    this.setState({currentStep: 10});
-    console.log('alertCartTimeout');
+    React.render(<ModalAlertTimeout />, document.getElementById('modalAlertTimeout'));
+    this.setState({currentStep: 1, formValues: {}, cartTimeout: 1});
   },
 
   render() {
@@ -46,7 +50,7 @@ var BookStore = React.createClass({
                              cartTimeout={this.state.cartTimeout}/>;
       case 5:
         return <Success data={this.state.formValues} cartTimeout={this.state.cartTimeout}/>;
-      case 10:
+
         return <div><h2>Your cart timed out, Please try again!</h2></div>;
       default:
         return <BookList updateFormData={this.updateFormData}/>;
