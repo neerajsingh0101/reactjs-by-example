@@ -1,0 +1,33 @@
+{
+  "name": "react-forms",
+  "version": "0.0.1",
+  "description": "ReactJS forms example",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint src"
+  },
+  "author": "Vipul A M <vipulnsward@gmail.com> (http://github.com/vipulnsward)",
+  "license": "MIT",
+  "homepage": "https://github.com/bigbinary/reactjs-by-example",
+  "devDependencies": {
+    "babel-core": "^5.4.7",
+    "babel-eslint": "^3.1.9",
+    "babel-loader": "^5.1.2",
+    "bower-webpack-plugin": "^0.1.8",
+    "css-loader": "^0.15.5",
+    "eslint-plugin-react": "^2.3.0",
+    "file-loader": "^0.8.4",
+    "react-hot-loader": "^1.2.7",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.8.2"
+  },
+  "dependencies": {
+    "bootstrap-webpack": "0.0.3",
+    "bower-webpack-plugin": "^0.1.8",
+    "font-awesome-webpack": "0.0.3",
+    "react": "^0.13.3",
+    "url-loader": "^0.5.6",
+    "whatwg-fetch": "^0.9.0"
+  }
+}
