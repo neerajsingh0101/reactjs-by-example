@@ -26,7 +26,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"
-    }
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
