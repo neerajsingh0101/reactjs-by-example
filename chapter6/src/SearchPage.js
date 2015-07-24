@@ -68,8 +68,7 @@ var SearchPage = React.createClass({
 
   renderDocs(docs){
     return (docs||[]).map((doc) => {
-      console.log(doc);
-      return <tr>
+      return <tr key={doc.key}>
         <td>{doc.title}</td>
         <td>{doc.title_suggest}</td>
         <td>{(doc.author_name || []).join(', ')}</td>
