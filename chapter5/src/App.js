@@ -12,7 +12,7 @@ import "babel-core/polyfill";
 
 var BookStore = React.createClass({
   getInitialState() {
-    return ({currentStep: 1, formValues: {}, cartTimeout: 1});
+    return ({currentStep: 1, formValues: {}, cartTimeout: 60});
   },
 
   updateCartTimeout(timeout){
