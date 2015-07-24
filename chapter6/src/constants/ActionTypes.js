@@ -1,0 +1,3 @@
+export const UPDATE_DOCS = 'UPDATE_DOCS';
+export const SEARCHING = 'SEARCHING';
+export const SEARCH_COMPLETED = 'SEARCH_COMPLETED';

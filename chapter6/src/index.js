@@ -1,4 +1,4 @@
 import React from 'react';
-import App from './App';
+import SearchApp from './App';
 
-React.render(<App />, document.getElementById('rootElement'));
+React.render(<SearchApp />, document.getElementById('rootElement'));
