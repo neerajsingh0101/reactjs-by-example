@@ -26,6 +26,7 @@
     "bootstrap-webpack": "0.0.3",
     "bower-webpack-plugin": "^0.1.8",
     "font-awesome-webpack": "0.0.3",
+    "immutable": "^3.7.4",
     "react": "^0.13.3",
     "url-loader": "^0.5.6",
     "whatwg-fetch": "^0.9.0"

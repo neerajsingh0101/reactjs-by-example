@@ -9,7 +9,7 @@ import "babel-core/polyfill";
 var SearchPage = React.createClass({
   render() {
     console.log(this.props);
-    const { searching, searchCompleted } = this.props.DocsStore;
+    const { searching, searchCompleted } = this.props.DocsStore.toObject();
 
     let tabStyles = {paddingTop: '5%'};
     return (
@@ -43,7 +43,7 @@ var SearchPage = React.createClass({
   },
 
   renderSearchElements(){
-    const { numFound, docs }  = this.props.DocsStore;
+    const { numFound, docs }  = this.props.DocsStore.toJS();
     return (
 
       <div className="row">
