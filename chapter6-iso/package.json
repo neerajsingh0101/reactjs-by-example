@@ -1,0 +1,56 @@
+{
+  "name": "react-way-getting-started",
+  "version": "1.0.0",
+  "description": "The React Way - Getting Started",
+  "main": "src/server/index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/server/index.js",
+    "postinstall": "webpack --config webpack.js",
+    "webpack": "webpack --config webpack.js",
+    "webpack-watch": "webpack --config webpack.js --watch --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RisingStack/react-way-getting-started.git"
+  },
+  "author": "RisingStack, Peter Marton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RisingStack/react-way-getting-started/issues"
+  },
+  "homepage": "https://github.com/RisingStack/react-way-getting-started",
+  "dependencies": {
+    "bootstrap-webpack": "0.0.3",
+    "bower-webpack-plugin": "^0.1.8",
+    "css-loader": "^0.15.5",
+    "debug": "^2.2.0",
+    "eslint-plugin-react": "^2.3.0",
+    "express": "^4.12.3",
+    "file-loader": "^0.8.4",
+    "font-awesome": "^4.3.0",
+    "font-awesome-webpack": "0.0.3",
+    "react": "^0.13.1",
+    "react-hot-loader": "^1.2.7",
+    "style-loader": "^0.12.3",
+    "url-loader": "^0.5.6",
+    "whatwg-fetch": "^0.9.0"
+  },
+  "devDependencies": {
+    "babel-core": "^5.4.7",
+    "babel-eslint": "^3.1.9",
+    "babel-loader": "^5.1.2",
+    "jest-cli": "^0.4.0",
+    "webpack": "^1.8.4"
+  },
+  "jest": {
+    "scriptPreprocessor": "./tools/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "react"
+    ],
+    "testPathDirs": [
+      "./src/app",
+      "./src/client"
+    ]
+  }
+}
