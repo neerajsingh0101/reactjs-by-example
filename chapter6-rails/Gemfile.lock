@@ -1,0 +1,363 @@
+GIT
+  remote: git://github.com/activeadmin/activeadmin.git
+  revision: 60914c887942cb34d737428fb9813f69bb8ae3ee
+  specs:
+    activeadmin (1.0.0.pre)
+      arbre (~> 1.0, >= 1.0.2)
+      bourbon
+      coffee-rails
+      formtastic (~> 3.1)
+      formtastic_i18n
+      inherited_resources (~> 1.6)
+      jquery-rails
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.15)
+      rails (>= 3.2, < 5.0)
+      ransack (~> 1.3)
+      sass-rails
+
+GIT
+  remote: git://github.com/bigbinary/mail_interceptor.git
+  revision: 3c6e9689e78a8edbf589d284b03a0146af421847
+  specs:
+    mail_interceptor (0.0.5)
+      activesupport
+
+GIT
+  remote: git://github.com/mhfs/devise-async.git
+  revision: f8f61910e6ef54fdc91ebf5088c0594be9dca19c
+  specs:
+    devise-async (0.9.0)
+      devise (~> 3.2)
+
+GIT
+  remote: git://github.com/rails/sprockets-rails.git
+  revision: 7bd1560360248ab11d8aba81e558bd817935c692
+  specs:
+    sprockets-rails (3.0.0.beta1)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
+      sprockets (>= 3.0.0, < 4.0)
+
+GIT
+  remote: git://github.com/reactjs/react-rails.git
+  revision: c189f2786fedfc6b2904a70568f449704e63a876
+  specs:
+    react-rails (1.1.0)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.2)
+      tilt
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (4.2.1)
+      actionpack (= 4.2.1)
+      actionview (= 4.2.1)
+      activejob (= 4.2.1)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.1)
+      actionview (= 4.2.1)
+      activesupport (= 4.2.1)
+      rack (~> 1.6)
+      rack-test (~> 0.6.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    actionview (4.2.1)
+      activesupport (= 4.2.1)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    activejob (4.2.1)
+      activesupport (= 4.2.1)
+      globalid (>= 0.3.0)
+    activemodel (4.2.1)
+      activesupport (= 4.2.1)
+      builder (~> 3.1)
+    activerecord (4.2.1)
+      activemodel (= 4.2.1)
+      activesupport (= 4.2.1)
+      arel (~> 6.0)
+    activesupport (4.2.1)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    ansi (1.5.0)
+    arbre (1.0.3)
+      activesupport (>= 3.0.0)
+    arel (6.0.0)
+    autoprefixer-rails (5.1.7)
+      execjs
+      json
+    babel-source (5.6.3)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
+    bcrypt (3.1.10)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.3)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
+    bourbon (4.2.1)
+      sass (~> 3.4)
+      thor
+    browser (0.8.0)
+    builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    coffee-rails (4.1.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.3.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.9.1)
+    connection_pool (2.2.0)
+    daemons (1.1.9)
+    debug_inspector (0.0.2)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.0.3)
+      activerecord (>= 3.0, < 5.0)
+      delayed_job (>= 3.0, < 4.1)
+    delayed_job_web (1.2.10)
+      activerecord (> 3.0.0)
+      delayed_job (> 2.0.3)
+      sinatra (>= 1.4.4)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    docile (1.1.5)
+    email_prefixer (1.1.0)
+      rails (>= 4.0)
+    email_validator (1.5.0)
+      activemodel
+    erubis (2.7.0)
+    eventmachine (1.0.7)
+    execjs (2.4.0)
+    font-awesome-sass (4.3.1)
+      sass (~> 3.2)
+    formtastic (3.1.3)
+      actionpack (>= 3.2.13)
+    formtastic_i18n (0.1.1)
+    globalid (0.3.5)
+      activesupport (>= 4.1.0)
+    haml (4.0.6)
+      tilt
+    haml-rails (0.8.2)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      html2haml (>= 1.0.1)
+      railties (>= 4.0.1)
+    handy (0.0.28)
+      hashr
+    has_scope (0.6.0)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
+    hashr (0.0.22)
+    honeybadger (2.0.11)
+    html2haml (2.0.0)
+      erubis (~> 2.7.0)
+      haml (~> 4.0.0)
+      nokogiri (~> 1.6.0)
+      ruby_parser (~> 3.5)
+    i18n (0.7.0)
+    inherited_resources (1.6.0)
+      actionpack (>= 3.2, < 5)
+      has_scope (~> 0.6.0.rc)
+      railties (>= 3.2, < 5)
+      responders
+    jbuilder (2.2.13)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
+    jquery-rails (4.0.3)
+      rails-dom-testing (~> 1.0)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.3)
+      railties (>= 3.2.16)
+    json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kgio (2.9.3)
+    loofah (2.0.2)
+      nokogiri (>= 1.5.9)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
+    marginalia (1.3.0)
+      actionpack (>= 2.3)
+      activerecord (>= 2.3)
+    mime-types (2.5)
+    mini_portile (0.6.2)
+    minitest (5.7.0)
+    minitest-reporters (1.0.11)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
+    multi_json (1.11.1)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
+    pg (0.18.1)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
+    rack (1.6.4)
+    rack-protection (1.5.3)
+      rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rails (4.2.1)
+      actionmailer (= 4.2.1)
+      actionpack (= 4.2.1)
+      actionview (= 4.2.1)
+      activejob (= 4.2.1)
+      activemodel (= 4.2.1)
+      activerecord (= 4.2.1)
+      activesupport (= 4.2.1)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.2.1)
+      sprockets-rails
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.6)
+      activesupport (>= 4.2.0.beta, < 5.0)
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.0.2)
+      loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.3)
+    railties (4.2.1)
+      actionpack (= 4.2.1)
+      activesupport (= 4.2.1)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    raindrops (0.13.0)
+    rake (10.4.2)
+    ransack (1.6.3)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
+    ruby-progressbar (1.7.1)
+    ruby_parser (3.6.4)
+      sexp_processor (~> 4.1)
+    sass (3.4.13)
+    sass-rails (5.0.3)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (~> 1.1)
+    sexp_processor (4.4.5)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+    simplecov (0.9.2)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.9.0)
+    simplecov-html (0.9.0)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    spring (1.3.3)
+    sprockets (3.2.0)
+      rack (~> 1.0)
+    sprockets-es6 (0.6.2)
+      babel-transpiler
+      sprockets (>= 3.0.0)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
+    thor (0.19.1)
+    thread_safe (0.3.5)
+    tilt (1.4.1)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    uglifier (2.7.1)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
+    web-console (2.1.1)
+      activemodel (>= 4.0)
+      binding_of_caller (>= 0.7.2)
+      railties (>= 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activeadmin!
+  arel
+  bootstrap-sass (~> 3.3.3)
+  browser
+  carrierwave
+  daemons
+  delayed_job_active_record
+  delayed_job_web (>= 1.2.10)
+  devise (= 3.4.1)
+  devise-async!
+  email_prefixer
+  email_validator
+  font-awesome-sass (~> 4.3.0)
+  haml-rails
+  handy
+  honeybadger
+  jbuilder (>= 2.2.13)
+  jquery-rails
+  mail_interceptor!
+  marginalia
+  minitest-reporters
+  pg
+  quiet_assets
+  rails (= 4.2.1)
+  rails_12factor
+  react-rails!
+  sass-rails (>= 5.0.3)
+  simple_form
+  simplecov
+  spring
+  sprockets-es6
+  sprockets-rails!
+  thin
+  uglifier (>= 2.7.1)
+  unicorn
+  web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.5

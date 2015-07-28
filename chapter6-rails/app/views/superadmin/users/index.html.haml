@@ -1,0 +1,17 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Last signed in
+      %th
+  - @users.each do |user|
+    %tr
+      %td
+        = user.name
+      %td
+        = user.email
+      %td
+        = user.last_sign_in_at
+      %td
+        = link_to 'Edit', "#", data: { url: edit_superadmin_user_path(user), behavior: 'display-in-modal' }
