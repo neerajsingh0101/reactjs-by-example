@@ -3,25 +3,13 @@ import React from 'react/addons';
 import AppRoot from './components/AppRoot';
 
 
-/*
- * @class App
- */
 class App {
 
-  /*
-   * @constructs App
-   * @param {Object} options
-   */
   constructor(options) {
 
     this.state = options.state;
   }
 
-  /*
-   * @method render
-   * @param {DOM} [element]
-   * @returns {String|undefined}
-   */
   render(element) {
 
 
@@ -40,10 +28,6 @@ class App {
     return React.renderToString(appRootElement);
   }
 
-  /*
-   * @method render
-   * @param {DOM} element
-   */
   renderToDOM(element) {
     if (!element) {
       new Error('App.renderToDOM: element is required');
@@ -52,10 +36,6 @@ class App {
     this.render(element);
   }
 
-  /*
-   * @method renderToString
-   * @returns {String}
-   */
   renderToString() {
     return this.render();
   }

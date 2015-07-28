@@ -1,5 +1,5 @@
 var config = {};
 
-config.title = 'My React App';
+config.title = 'Isomorphic App';
 
 module.exports = config;
