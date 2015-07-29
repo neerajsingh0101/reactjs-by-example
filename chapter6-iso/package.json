@@ -1,7 +1,7 @@
 {
-  "name": "react-way-getting-started",
+  "name": "reactjs-by-example",
   "version": "1.0.0",
-  "description": "The React Way - Getting Started",
+  "description": "ReactJS by Example",
   "main": "src/server/index.js",
   "scripts": {
     "test": "jest",
@@ -10,16 +10,9 @@
     "webpack": "webpack --config webpack.js",
     "webpack-watch": "webpack --config webpack.js --watch --colors"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RisingStack/react-way-getting-started.git"
-  },
-  "author": "RisingStack, Peter Marton",
+  "author": "Vipul A M, RisingStack, Peter Marton",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/RisingStack/react-way-getting-started/issues"
-  },
-  "homepage": "https://github.com/RisingStack/react-way-getting-started",
+  "homepage": "https://github.com/bigbinary/reactjs-by-example",
   "dependencies": {
     "bootstrap-webpack": "0.0.3",
     "bower-webpack-plugin": "^0.1.8",
