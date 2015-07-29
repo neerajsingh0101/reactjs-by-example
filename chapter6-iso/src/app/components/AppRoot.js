@@ -6,15 +6,14 @@ import SearchPage from './SearchPage'
 import config from '../../../config/app';
 
 var AppRoot = React.createClass({
-  mixins: [React.addons.PureRenderMixin],
-
-  render () {
-    return <SearchPage/>;
-  }
-});
-
-AppRoot.propTypes = {
-  state: React.PropTypes.object.isRequired
-};
+    propTypes: {
+      state: React.PropTypes.object.isRequired
+    },
+    render()
+    {
+      return <SearchPage/>;
+    }
+  })
+  ;
 
 export default AppRoot;
