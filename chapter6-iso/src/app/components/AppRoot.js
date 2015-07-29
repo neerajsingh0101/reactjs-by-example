@@ -6,7 +6,7 @@ import SearchPage from './SearchPage'
 import config from '../../../config/app';
 
 var AppRoot = React.createClass({
-  mixins: [React.addinsPureRenderMixin],
+  mixins: [React.addons.PureRenderMixin],
 
   render () {
     return <SearchPage/>;
