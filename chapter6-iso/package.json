@@ -18,6 +18,7 @@
     "bower-webpack-plugin": "^0.1.8",
     "css-loader": "^0.15.5",
     "debug": "^2.2.0",
+    "ejs": "^2.3.3",
     "eslint-plugin-react": "^2.3.0",
     "express": "^4.12.3",
     "file-loader": "^0.8.4",

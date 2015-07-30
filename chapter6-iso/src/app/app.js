@@ -14,9 +14,7 @@ class App {
 
 
     // would be in JSX: <AppRoot state={this.state} />
-    var appRootElement = React.createElement(AppRoot, {
-      state: this.state
-    });
+    var appRootElement =  <AppRoot state={this.state} />;
 
     // render to DOM
     if (element) {

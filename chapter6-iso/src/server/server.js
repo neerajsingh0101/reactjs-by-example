@@ -1,6 +1,9 @@
 import path from 'path';
 import Express from 'express';
 
+import AppRoot from '../app/components/AppRoot'
+import React from 'react/addons';
+
 var app = Express();
 var server;
 
@@ -11,7 +14,9 @@ app.use('/styles', Express.static(PATH_STYLES));
 app.use(Express.static(PATH_DIST));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/index.html'));
+  var reactAppContent = React.renderToString(<AppRoot state={{} }/>);
+  console.log(reactAppContent);
+  res.render(path.resolve(__dirname, '../client/index.ejs'), {reactOutput: reactAppContent});
 });
 
 server = app.listen(process.env.PORT || 3000, () => {
