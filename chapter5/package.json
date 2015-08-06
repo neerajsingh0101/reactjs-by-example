@@ -23,6 +23,8 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "bootstrap": "^3.3.5",
+    "bootstrap-webpack": "0.0.3",
     "bower-webpack-plugin": "^0.1.8",
     "file-loader": "^0.8.4",
     "react": "^0.13.3",
