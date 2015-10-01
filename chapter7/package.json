@@ -25,6 +25,7 @@
   "dependencies": {
     "bootstrap-webpack": "0.0.3",
     "bower-webpack-plugin": "^0.1.8",
+    "btoa": "^1.1.2",
     "font-awesome-webpack": "0.0.3",
     "react": "^0.13.3",
     "url-loader": "^0.5.6",
