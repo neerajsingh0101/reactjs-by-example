@@ -3,7 +3,7 @@ require("bootstrap");
 require("bootstrap-webpack");
 require("font-awesome-webpack");
 require('btoa');
-import React from 'react';
+import React from 'react/addons';
 import "babel-core/polyfill";
 
 
