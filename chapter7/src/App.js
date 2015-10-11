@@ -7,11 +7,11 @@ require('btoa');
 import React from 'react';
 import "babel-core/polyfill";
 
-
 var SearchPage = React.createClass({
   getInitialState(){
     return {docs: [], numFound: 0, num_found: 0, start: 0, searchCompleted: false, searching: false}
   },
+
   render() {
     console.log(this.state);
     let tabStyles = {paddingTop: '5%'};
@@ -44,9 +44,9 @@ var SearchPage = React.createClass({
       </div>
     </div>;
   },
+
   renderSearchElements(){
     return (
-
       <div className="row">
         <div className="col-lg-8 col-lg-offset-2">
           <span className='text-center'>Total Results: {this.state.numFound}</span>
@@ -63,7 +63,6 @@ var SearchPage = React.createClass({
           </table>
         </div>
       </div>
-
     );
   },
 
@@ -78,7 +77,6 @@ var SearchPage = React.createClass({
       </tr>
     })
   },
-
 
   performSearch(){
     let searchTerm = $(this.refs.searchInput.getDOMNode()).val();
@@ -106,10 +104,7 @@ var SearchPage = React.createClass({
       .catch(function (ex) {
         console.log('Parsing failed', ex)
       })
-
   }
-
 });
-
 
 module.exports = SearchPage;
