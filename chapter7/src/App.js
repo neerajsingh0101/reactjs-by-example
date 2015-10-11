@@ -19,8 +19,9 @@ var SearchPage = React.createClass({
       <div className='container'>
         <div className="row" style={tabStyles}>
           <div className="col-lg-8 col-lg-offset-2">
+            <h4>Open Library | Search any book you want!</h4>
             <div className="input-group">
-              <input type="text" className="form-control" placeholder="Search for Projects..." ref='searchInput'/>
+              <input type="text" className="form-control" placeholder="Search books..." ref='searchInput'/>
             <span className="input-group-btn">
               <button className="btn btn-default" type="button" onClick={this.performSearch}>Go!</button>
             </span>
@@ -96,7 +97,7 @@ var SearchPage = React.createClass({
     });
   },
 
-  openLibrarySearch(searchTerm){
+  openLibrarySearch(searchTerm) {
     let openlibraryURI = `https://openlibrary.org/search.json?page=1&q=${searchTerm}}`;
     fetch(openlibraryURI)
       .then(this.parseJSON)
