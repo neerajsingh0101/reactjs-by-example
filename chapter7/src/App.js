@@ -6,14 +6,74 @@ require('btoa');
 
 import React from 'react';
 import "babel-core/polyfill";
+import Update from 'react-addons-update';
+import sortBy from 'sort-by';
 
-var SearchPage = React.createClass({
-  getInitialState(){
-    return {docs: [], numFound: 0, num_found: 0, start: 0, searchCompleted: false, searching: false}
+var Spinner = React.createClass({
+  render() {
+    return(
+      <div className="row">
+        <div className="col-lg-8 col-lg-offset-2">
+          <div className='text-center'><i className="fa fa-spinner fa-pulse fa-5x"></i></div>
+        </div>
+      </div>
+    );
+  }
+});
+
+var BookRow = React.createClass({
+  render() {
+    return(
+      <tr>
+        <td>{this.props.title}</td>
+        <td>{(this.props.author_name || []).join(', ')}</td>
+        <td>{this.props.edition_count}</td>
+      </tr>
+    );
+  }
+});
+
+var BookList = React.createClass({
+  renderBooks() {
+    return this.props.docs.map((doc, idx) => {
+      return (
+        <BookRow key={idx}
+                 title={doc.title}
+                 author_name={doc.author_name}
+                 edition_count={doc.edition_count} />
+      );
+    })
   },
 
   render() {
-    console.log(this.state);
+    return (
+      <div className="row">
+        <div className="col-lg-8 col-lg-offset-2">
+          <span className='text-center'>Total Results: {this.props.searchCount}</span>
+          <table className="table table-stripped">
+            <thead>
+              <tr>
+                <th><a href="#" onClick={this.props.sortByTitle}>Title</a></th>
+                <th>Author</th>
+                <th>No. of Editions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderBooks()}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+});
+
+var App = React.createClass({
+  getInitialState(){
+    return { docs: [], num_found: 0, searchCompleted: false, searching: false, sorting: 'asc' };
+  },
+
+  render() {
     let tabStyles = {paddingTop: '5%'};
     return (
       <div className='container'>
@@ -22,65 +82,19 @@ var SearchPage = React.createClass({
             <h4>Open Library | Search any book you want!</h4>
             <div className="input-group">
               <input type="text" className="form-control" placeholder="Search books..." ref='searchInput'/>
-            <span className="input-group-btn">
-              <button className="btn btn-default" type="button" onClick={this.performSearch}>Go!</button>
-            </span>
+              <span className="input-group-btn">
+                <button className="btn btn-default" type="button" onClick={this.performSearch}>Go!</button>
+              </span>
             </div>
           </div>
         </div>
-        { (() => {
-          if (this.state.searching) {
-            return this.renderSearching();
-          }
-          return this.state.searchCompleted ? this.renderSearchElements() : <div/>
-        })()}
+        {this.displaySearchResults()}
       </div>
     );
-  },
-
-  renderSearching(){
-    return <div className="row">
-      <div className="col-lg-8 col-lg-offset-2">
-        <div className='text-center'><i className="fa fa-spinner fa-pulse fa-5x"></i></div>
-      </div>
-    </div>;
-  },
-
-  renderSearchElements(){
-    return (
-      <div className="row">
-        <div className="col-lg-8 col-lg-offset-2">
-          <span className='text-center'>Total Results: {this.state.numFound}</span>
-          <table className="table table-stripped">
-            <thead>
-            <th>Title</th>
-            <th>Title suggest</th>
-            <th>Author</th>
-            <th>Edition</th>
-            </thead>
-            <tbody>
-            {this.renderDocs(this.state.docs)}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    );
-  },
-
-  renderDocs(docs){
-    return docs.map((doc) => {
-      console.log(doc);
-      return <tr>
-        <td>{doc.title}</td>
-        <td>{doc.title_suggest}</td>
-        <td>{(doc.author_name || []).join(', ')}</td>
-        <td>{doc.edition_count}</td>
-      </tr>
-    })
   },
 
   performSearch(){
-    let searchTerm = $(this.refs.searchInput.getDOMNode()).val();
+    let searchTerm = $(this.refs.searchInput).val();
     this.openLibrarySearch(searchTerm);
     this.setState({searchCompleted: false, searching: true});
   },
@@ -98,14 +112,36 @@ var SearchPage = React.createClass({
   },
 
   openLibrarySearch(searchTerm) {
-    let openlibraryURI = `https://openlibrary.org/search.json?page=1&q=${searchTerm}}`;
+    let openlibraryURI = `https://openlibrary.org/search.json?q=${searchTerm}`;
+    console.log(openlibraryURI);
+
     fetch(openlibraryURI)
       .then(this.parseJSON)
       .then(this.updateState)
       .catch(function (ex) {
         console.log('Parsing failed', ex)
-      })
+      });
+  },
+
+  sortByTitle() {
+    let sortAttribute = this.state.sorting === 'asc' ? "title" : "-title";
+    let newState = Update(this.state, { docs: { $set: this.state.docs.sort(sortBy(sortAttribute)) },
+                                        sorting: { $apply: (sorting) => { return sorting === 'asc' ? 'desc' : 'asc' }}});
+    this.setState(newState);
+  },
+
+  displaySearchResults() {
+    if(this.state.searching) {
+      return <Spinner />;
+    } else if(this.state.searchCompleted) {
+      return (
+        <BookList docs={this.state.docs}
+                  searchCount={this.state.num_found}
+                  sortByTitle={this.sortByTitle} />
+      );
+    }
   }
 });
 
-module.exports = SearchPage;
+
+module.exports = App;
