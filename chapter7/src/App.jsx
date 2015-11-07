@@ -130,13 +130,13 @@ var App = React.createClass({
 
   _sortByTitle() {
     let sortByAttribute = this.state.sorting === 'asc' ? "title" : "-title";
-    let unsortedBooks = this.state.books;
+    let unsortedBooks = Object.assign([], this.state.books);
     console.log("Before sorting :");
     console.log(this.state.books[0].title);
     let sortedBooks = unsortedBooks.sort(sortBy(sortByAttribute));
     console.log("After sorting :");
     console.log(this.state.books[0].title);
-    // this.setState({ books: sortedBooks, sorting: this._toggleSorting() });
+    this.setState({ books: sortedBooks, sorting: this._toggleSorting() });
   },
 
   _toggleSorting() {
