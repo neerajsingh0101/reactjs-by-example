@@ -35,12 +35,12 @@ var BookRow = React.createClass({
 
 var BookList = React.createClass({
   renderBooks() {
-    return this.props.docs.map((doc, idx) => {
+    return this.props.books.map((book, idx) => {
       return (
         <BookRow key={idx}
-                 title={doc.title}
-                 author_name={doc.author_name}
-                 edition_count={doc.edition_count} />
+                 title={book.title}
+                 author_name={book.author_name}
+                 edition_count={book.edition_count} />
       );
     })
   },
@@ -70,7 +70,7 @@ var BookList = React.createClass({
 
 var App = React.createClass({
   getInitialState(){
-    return { docs: [], num_found: 0, searchCompleted: false, searching: false, sorting: 'asc' };
+    return { books: [], totalBooks: 0, searchCompleted: false, searching: false, sorting: 'asc' };
   },
 
   render() {
@@ -105,7 +105,8 @@ var App = React.createClass({
 
   updateState(json){
     this.setState({
-      ...json,
+      books: json.docs,
+      totalBooks: json.numFound,
       searchCompleted: true,
       searching: false
     });
@@ -125,8 +126,10 @@ var App = React.createClass({
 
   sortByTitle() {
     let sortAttribute = this.state.sorting === 'asc' ? "title" : "-title";
-    let newState = Update(this.state, { docs: { $set: this.state.docs.sort(sortBy(sortAttribute)) },
-                                        sorting: { $apply: (sorting) => { return sorting === 'asc' ? 'desc' : 'asc' }}});
+    let sortedBooks = this.state.books;
+
+    // let newState = Update(this.state, { books: { $set: this.state.books.sort(sortBy(sortAttribute)) },
+    //                                        sorting: { $apply: (sorting) => { return sorting === 'asc' ? 'desc' : 'asc' }}});
     this.setState(newState);
   },
 
@@ -135,8 +138,8 @@ var App = React.createClass({
       return <Spinner />;
     } else if(this.state.searchCompleted) {
       return (
-        <BookList docs={this.state.docs}
-                  searchCount={this.state.num_found}
+        <BookList books={this.state.books}
+                  searchCount={this.state.totalBooks}
                   sortByTitle={this.sortByTitle} />
       );
     }
