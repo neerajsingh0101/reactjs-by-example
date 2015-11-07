@@ -70,7 +70,11 @@ var BookList = React.createClass({
 
 var App = React.createClass({
   getInitialState(){
-    return { books: [], totalBooks: 0, searchCompleted: false, searching: false, sorting: 'asc' };
+    return { books: [],
+             totalBooks: 0,
+             searchCompleted: false,
+             searching: false,
+             sorting: 'asc' };
   },
 
   render() {
@@ -125,12 +129,18 @@ var App = React.createClass({
   },
 
   _sortByTitle() {
-    let sortAttribute = this.state.sorting === 'asc' ? "title" : "-title";
-    let sortedBooks = this.state.books;
+    let sortByAttribute = this.state.sorting === 'asc' ? "title" : "-title";
+    let unsortedBooks = this.state.books;
+    console.log("Before sorting :");
+    console.log(this.state.books[0].title);
+    let sortedBooks = unsortedBooks.sort(sortBy(sortByAttribute));
+    console.log("After sorting :");
+    console.log(this.state.books[0].title);
+    // this.setState({ books: sortedBooks, sorting: this._toggleSorting() });
+  },
 
-    // let newState = Update(this.state, { books: { $set: this.state.books.sort(sortBy(sortAttribute)) },
-    //                                        sorting: { $apply: (sorting) => { return sorting === 'asc' ? 'desc' : 'asc' }}});
-    this.setState(newState);
+  _toggleSorting() {
+    return this.state.sorting === 'asc' ? 'desc' : 'asc';
   },
 
   _displaySearchResults() {
