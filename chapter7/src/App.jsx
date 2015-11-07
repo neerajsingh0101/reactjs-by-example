@@ -34,7 +34,7 @@ var BookRow = React.createClass({
 });
 
 var BookList = React.createClass({
-  renderBooks() {
+  _renderBooks() {
     return this.props.books.map((book, idx) => {
       return (
         <BookRow key={idx}
@@ -53,13 +53,13 @@ var BookList = React.createClass({
           <table className="table table-stripped">
             <thead>
               <tr>
-                <th><a href="#" onClick={this.props.sortByTitle}>Title</a></th>
+                <th><a href="#" onClick={this.props._sortByTitle}>Title</a></th>
                 <th>Author</th>
                 <th>No. of Editions</th>
               </tr>
             </thead>
             <tbody>
-              {this.renderBooks()}
+              {this._renderBooks()}
             </tbody>
           </table>
         </div>
@@ -83,27 +83,27 @@ var App = React.createClass({
             <div className="input-group">
               <input type="text" className="form-control" placeholder="Search books..." ref='searchInput'/>
               <span className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={this.performSearch}>Go!</button>
+                <button className="btn btn-default" type="button" onClick={this._performSearch}>Go!</button>
               </span>
             </div>
           </div>
         </div>
-        {this.displaySearchResults()}
+        {this._displaySearchResults()}
       </div>
     );
   },
 
-  performSearch(){
+  _performSearch(){
     let searchTerm = $(this.refs.searchInput).val();
-    this.openLibrarySearch(searchTerm);
+    this._searchOpenLibrary(searchTerm);
     this.setState({searchCompleted: false, searching: true});
   },
 
-  parseJSON(response) {
+  _parseJSON(response) {
     return response.json();
   },
 
-  updateState(json){
+  _updateState(json){
     this.setState({
       books: json.docs,
       totalBooks: json.numFound,
@@ -112,19 +112,19 @@ var App = React.createClass({
     });
   },
 
-  openLibrarySearch(searchTerm) {
+  _searchOpenLibrary(searchTerm) {
     let openlibraryURI = `https://openlibrary.org/search.json?q=${searchTerm}`;
     console.log(openlibraryURI);
 
     fetch(openlibraryURI)
-      .then(this.parseJSON)
-      .then(this.updateState)
+      .then(this._parseJSON)
+      .then(this._updateState)
       .catch(function (ex) {
         console.log('Parsing failed', ex)
       });
   },
 
-  sortByTitle() {
+  _sortByTitle() {
     let sortAttribute = this.state.sorting === 'asc' ? "title" : "-title";
     let sortedBooks = this.state.books;
 
@@ -133,14 +133,14 @@ var App = React.createClass({
     this.setState(newState);
   },
 
-  displaySearchResults() {
+  _displaySearchResults() {
     if(this.state.searching) {
       return <Spinner />;
     } else if(this.state.searchCompleted) {
       return (
         <BookList books={this.state.books}
                   searchCount={this.state.totalBooks}
-                  sortByTitle={this.sortByTitle} />
+                  _sortByTitle={this._sortByTitle} />
       );
     }
   }
