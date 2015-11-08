@@ -130,13 +130,9 @@ var App = React.createClass({
 
   _sortByTitle() {
     let sortByAttribute = this.state.sorting === 'asc' ? "title" : "-title";
-    console.log("Before sorting");
-    console.log(this.state.books[0].title);
     let newState = Update(this.state,
                           { books: { $apply: (books) => { return books.sort(sortBy(sortByAttribute)) } },
                             sorting: { $apply: (sorting) => { return sorting === 'asc' ? 'desc' : 'asc' } } });
-    console.log("After sorting");
-    console.log(this.state.books[0].title);
     this.setState(newState);
   },
 
