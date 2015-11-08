@@ -130,18 +130,14 @@ var App = React.createClass({
 
   _sortByTitle() {
     let sortByAttribute = this.state.sorting === 'asc' ? "title" : "-title";
-    let unsortedBooks = Object.assign([], this.state.books);
-    unsortedBooks.map((book) => book.title = book.title.toUpperCase());
-    console.log("unsortedBooks");
-    console.log(unsortedBooks[0].title);
-    console.log("this.state.books");
+    console.log("Before sorting");
     console.log(this.state.books[0].title);
-    let sortedBooks = unsortedBooks.sort(sortBy(sortByAttribute));
-    this.setState({ books: sortedBooks, sorting: this._toggleSorting() });
-  },
-
-  _toggleSorting() {
-    return this.state.sorting === 'asc' ? 'desc' : 'asc';
+    let newState = Update(this.state,
+                          { books: { $apply: (books) => { return books.sort(sortBy(sortByAttribute)) } },
+                            sorting: { $apply: (sorting) => { return sorting === 'asc' ? 'desc' : 'asc' } } });
+    console.log("After sorting");
+    console.log(this.state.books[0].title);
+    this.setState(newState);
   },
 
   _displaySearchResults() {
