@@ -5,9 +5,10 @@ require("jquery");
 require('btoa');
 
 import React from 'react';
-import "babel-core/polyfill";
+// import "babel-core/polyfill";
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
+import RowAlternator from '../src/RowAlternator';
 
 var Spinner = React.createClass({
   render() {
@@ -24,7 +25,7 @@ var Spinner = React.createClass({
 var BookRow = React.createClass({
   render() {
     return(
-      <tr>
+      <tr style={this.props.style}>
         <td>{this.props.title}</td>
         <td>{(this.props.author_name || []).join(', ')}</td>
         <td>{this.props.edition_count}</td>
@@ -34,22 +35,13 @@ var BookRow = React.createClass({
 });
 
 var BookList = React.createClass({
-  _renderBooks() {
-    return this.props.books.map((book, idx) => {
-      return (
-        <BookRow key={idx}
-                 title={book.title}
-                 author_name={book.author_name}
-                 edition_count={book.edition_count} />
-      );
-    })
-  },
-
   render() {
     return (
       <div className="row">
         <div className="col-lg-8 col-lg-offset-2">
-          <span className='text-center'>Total Results: {this.props.searchCount}</span>
+          <span className='text-center'>
+            Total Results: {this.props.searchCount}
+          </span>
           <table className="table table-stripped">
             <thead>
               <tr>
@@ -58,9 +50,9 @@ var BookList = React.createClass({
                 <th>No. of Editions</th>
               </tr>
             </thead>
-            <tbody>
-              {this._renderBooks()}
-            </tbody>
+            <RowAlternator firstColor="white" secondColor="lightgrey">
+              {this.props.children}
+            </RowAlternator>
           </table>
         </div>
       </div>
@@ -99,15 +91,15 @@ var App = React.createClass({
 
   _performSearch(){
     let searchTerm = $(this.refs.searchInput).val();
-    this._searchOpenLibrary(searchTerm);
     this.setState({searchCompleted: false, searching: true});
+    this._searchOpenLibrary(searchTerm);
   },
 
   _parseJSON(response) {
     return response.json();
   },
 
-  _updateState(json){
+  _updateState(json) {
     this.setState({
       books: json.docs,
       totalBooks: json.numFound,
@@ -136,14 +128,27 @@ var App = React.createClass({
     this.setState(newState);
   },
 
+  _renderBooks() {
+    return this.state.books.map((book, idx) => {
+      return (
+        <BookRow key={idx}
+                 title={book.title}
+                 author_name={book.author_name}
+                 edition_count={book.edition_count} />
+      );
+    })
+  },
+
   _displaySearchResults() {
     if(this.state.searching) {
       return <Spinner />;
     } else if(this.state.searchCompleted) {
       return (
-        <BookList books={this.state.books}
-                  searchCount={this.state.totalBooks}
-                  _sortByTitle={this._sortByTitle} />
+        <BookList
+            searchCount={this.state.totalBooks}
+            _sortByTitle={this._sortByTitle}>
+          {this._renderBooks()}
+        </BookList>
       );
     }
   }
