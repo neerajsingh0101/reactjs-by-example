@@ -9,18 +9,7 @@ import React from 'react';
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
 import RowAlternator from '../src/RowAlternator';
-
-var Spinner = React.createClass({
-  render() {
-    return(
-      <div className="row">
-        <div className="col-lg-8 col-lg-offset-2">
-          <div className='text-center'><i className="fa fa-spinner fa-pulse fa-5x"></i></div>
-        </div>
-      </div>
-    );
-  }
-});
+import Spinner from '../src/Spinner';
 
 var BookRow = React.createClass({
   render() {
@@ -71,6 +60,7 @@ var App = React.createClass({
 
   render() {
     let tabStyles = {paddingTop: '5%'};
+
     return (
       <div className='container'>
         <div className="row" style={tabStyles}>
