@@ -4,6 +4,7 @@ const App = require('../src/App');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import Spinner from './../src/Spinner';
 
 describe('App', () => {
   it('mounts successfully', () => {
@@ -21,6 +22,8 @@ describe('App', () => {
     TestUtils.Simulate.click(submitButton);
     expect(app.state.searching).toEqual(true);
     expect(app.state.searchCompleted).toEqual(false);
+    let spinner = TestUtils.findRenderedComponentWithType(app, Spinner);
+    expect(spinner).toBeTruthy();
   }),
 
   it('renders books when search result is received from API', () => {
