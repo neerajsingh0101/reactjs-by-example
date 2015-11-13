@@ -1,4 +1,4 @@
-react-forms
+react-addons
 ===========
 
 Examples of React addons
