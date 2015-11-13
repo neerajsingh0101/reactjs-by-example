@@ -7,6 +7,25 @@
     "lint": "eslint src",
     "test": "jest"
   },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+     "unmockedModulePathPatterns": [
+         "<rootDir>/node_modules/react",
+         "<rootDir>/node_modules/react-dom",
+         "<rootDir>/node_modules/react-addons-test-utils",
+         "<rootDir>/node_modules/fbjs"
+     ],
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6",
+      "jsx"
+    ]
+  },
   "author": "Vipul A M <vipulnsward@gmail.com> (http://github.com/vipulnsward)",
   "license": "MIT",
   "homepage": "https://github.com/bigbinary/reactjs-by-example",
@@ -21,7 +40,9 @@
     "react-hot-loader": "^1.2.7",
     "style-loader": "^0.12.3",
     "webpack": "^1.10.1",
-    "webpack-dev-server": "^1.8.2"
+    "webpack-dev-server": "^1.8.2",
+    "jest-cli": "0.7.1",
+    "babel-jest": "5.3.0"
   },
   "dependencies": {
     "bootstrap-webpack": "0.0.3",

@@ -1,11 +1,11 @@
 require("jquery");
+require('btoa');
+require('whatwg-fetch');
 // require("bootstrap");
 // require("bootstrap-webpack");
 // require("font-awesome-webpack");
-require('btoa');
 
 import React from 'react';
-// import "babel-core/polyfill";
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
 import RowAlternator from '../src/RowAlternator';
@@ -89,8 +89,8 @@ var App = React.createClass({
     );
   },
 
-  _performSearch(){
-    let searchTerm = $(this.refs.searchInput).val();
+  _performSearch() {
+    let searchTerm = this.refs.searchInput.value;
     this.setState({searchCompleted: false, searching: true});
     this._searchOpenLibrary(searchTerm);
   },
@@ -99,25 +99,26 @@ var App = React.createClass({
     return response.json();
   },
 
-  _updateState(json) {
+  _updateState(response) {
+    let jsonResponse = response;
+
     this.setState({
-      books: json.docs,
-      totalBooks: json.numFound,
+      books: jsonResponse.docs,
+      totalBooks: jsonResponse.numFound,
       searchCompleted: true,
       searching: false
     });
   },
 
+  _fetchData(url) {
+    return fetch(url).then(this._parseJSON).catch(function (ex) {
+      console.log('Parsing failed', ex)
+    });
+  },
+
   _searchOpenLibrary(searchTerm) {
     let openlibraryURI = `https://openlibrary.org/search.json?q=${searchTerm}`;
-    console.log(openlibraryURI);
-
-    fetch(openlibraryURI)
-      .then(this._parseJSON)
-      .then(this._updateState)
-      .catch(function (ex) {
-        console.log('Parsing failed', ex)
-      });
+    this._fetchData(openlibraryURI).then(this._updateState);
   },
 
   _sortByTitle() {
@@ -140,9 +141,9 @@ var App = React.createClass({
   },
 
   _displaySearchResults() {
-    if(this.state.searching) {
+    if (this.state.searching) {
       return <Spinner />;
-    } else if(this.state.searchCompleted) {
+    } else if (this.state.searchCompleted) {
       return (
         <BookList
             searchCount={this.state.totalBooks}
