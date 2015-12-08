@@ -1,9 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var BowerWebpackPlugin = require("bower-webpack-plugin");
-
-
 module.exports = {
   devtool: 'eval',
   entry: [
@@ -18,14 +15,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new BowerWebpackPlugin({
-      excludes: /.*\.less/
-    }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -36,10 +26,6 @@ module.exports = {
       loaders: ['react-hot', 'babel'],
       include: path.join(__dirname, 'src')
     },
-      {
-        test: /\.css$/,
-        loader: "style-loader!css-loader"
-      },
       {test: /\.woff(\d+)?$/, loader: 'url?prefix=font/&limit=5000&mimetype=application/font-woff'},
       {test: /\.ttf$/, loader: 'file?prefix=font/'},
       {test: /\.eot$/, loader: 'file?prefix=font/'},
