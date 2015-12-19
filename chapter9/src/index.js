@@ -55,10 +55,10 @@ const Deep = React.createClass({
         <p>You can link from anywhere really deep too</p>
         <p>Params stick around: {this.props.params.one} {this.props.params.two}</p>
         <p>
-          <Link to={`/pictures/c0`} state={{ modal: true, returnTo: this.props.location.pathname }}>
+          <Link to={`/pictures/${Cats.first().cid}`} state={{ modal: true, returnTo: this.props.location.pathname }}>
             Link to picture with Modal
           </Link><br/>
-          <Link to={`/pictures/c0`}>
+          <Link to={`/pictures/${Cats.first().cid}`}>
             Without modal
           </Link>
         </p>
