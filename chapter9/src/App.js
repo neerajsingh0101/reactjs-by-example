@@ -48,4 +48,4 @@ const App = React.createClass({
   }
 });
 
-module.exports = App;
+export {App as default}

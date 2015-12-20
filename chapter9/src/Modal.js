@@ -24,4 +24,4 @@ const Modal = React.createClass({
   }
 })
 
-module.exports = Modal;
+export {Modal as default}
