@@ -53,6 +53,7 @@
     "history": "^1.13.1",
     "jquery": "^2.1.4",
     "react": "^0.14.0",
+    "react-addons-css-transition-group": "^0.14.3",
     "react-addons-test-utils": "^0.14.2",
     "react-addons-update": "^0.14.0",
     "react-dom": "^0.14.0",
