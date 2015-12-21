@@ -8,30 +8,11 @@ import App from './App'
 import { Cats, PictureModel } from './models';
 import Picture from './Picture'
 import Sample from './Sample'
+import Home from './Home'
+
 const history = useBasename(createHistory)({
   basename: '/pinterest'
 });
-
-
-const Home = React.createClass({
-  render() {
-    let sampleCat = Cats.sample();
-    return (
-      <div>
-        <div>
-          {Cats.map(cat => (
-            <Link key={cat.cid} to={`/pictures/${cat.cid}`} state={{ modal: true, returnTo: this.props.location.pathname }}>
-              <img style={{ margin: 10 }} src={cat.get('src')} height="100" />
-            </Link>
-          ))}
-        </div>
-        <p><Link to={`/this/${sampleCat.cid}/is/456/sampleroute`}>{`Interesting Details about ${sampleCat.get('name')}`}</Link></p>
-      </div>
-    )
-  }
-})
-
-
 
 
 render((
