@@ -1,5 +1,6 @@
 import Backbone from 'backbone';
 import Faker from 'faker';
+import _ from 'underscore';
 
 const PictureModel = Backbone.Model.extend({
   defaults: {
@@ -11,14 +12,13 @@ const PictureModel = Backbone.Model.extend({
 
 class CatGenerator {
   constructor() {
-    this.timeArray = new Array(2000, 3000, 1500, 2500, 1000, 4000, 5000, 3500);
     this.Cats = new Backbone.Collection;
     [600, 601, 602, 603, 604, 605].map( (height)=>{
       this.createCat(height, 600);
     })
   }
 
-  createCat(height = 601, width = 600) {
+  createCat(height = _.random(600, 650), width = 600) {
     console.log('Adding new cat');
     this.Cats.add(new PictureModel({
       src: `http://lorempixel.com/${height}/${width}/cats/`,
@@ -28,7 +28,7 @@ class CatGenerator {
   }
 
   randRange() {
-    return this.timeArray[Math.floor(this.timeArray.length * Math.random())];
+    return _.random(5000, 10000);
   }
 
 }

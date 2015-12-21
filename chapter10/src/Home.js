@@ -1,8 +1,9 @@
 import React from 'react'
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 import {PictureModel, CatGenerator} from './models';
 import { createHistory, useBasename } from 'history'
 import { Router, Route, IndexRoute, Link } from 'react-router'
-
+import './Cats.css'
 
 class Home extends React.Component {
   constructor() {
@@ -30,17 +31,18 @@ class Home extends React.Component {
     return (
         <div>
           <div>
-            {Cats.map(cat => (
-                <Link key={cat.cid} to={`/pictures/${cat.cid}`}
-                      state={{ modal: true, returnTo: this.props.location.pathname, cat: cat }}>
-                  <img style={{ margin: 10 }} src={cat.get('src')} height="100"/>
-                </Link>
-            ))}
+            <ReactCSSTransitionGroup transitionName="cats" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+              {Cats.map(cat => (
+                  <Link key={cat.cid} to={`/pictures/${cat.cid}`}
+                        state={{ modal: true, returnTo: this.props.location.pathname, cat: cat }}>
+                    <img style={{ margin: 10 }} src={cat.get('src')} height="100"/>
+                  </Link>
+              ))}
+            </ReactCSSTransitionGroup>
           </div>
         </div>
     )
   }
 }
-
 
 export {Home as default}
