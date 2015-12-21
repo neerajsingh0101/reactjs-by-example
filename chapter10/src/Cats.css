@@ -15,3 +15,13 @@
     opacity: 0.01;
     transition: opacity 300ms ease-in;
 }
+
+
+.cats-appear {
+    opacity: 0.01;
+}
+
+.cats-appear.cats-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}

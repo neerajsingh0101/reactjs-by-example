@@ -31,7 +31,7 @@ class Home extends React.Component {
     return (
         <div>
           <div>
-            <ReactCSSTransitionGroup transitionName="cats" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+            <ReactCSSTransitionGroup transitionName="cats" transitionEnterTimeout={500} transitionLeaveTimeout={300} transitionAppear={true} transitionAppearTimeout={500}>
               {Cats.map(cat => (
                   <Link key={cat.cid} to={`/pictures/${cat.cid}`}
                         state={{ modal: true, returnTo: this.props.location.pathname, cat: cat }}>
