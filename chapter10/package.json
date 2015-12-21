@@ -1,0 +1,68 @@
+{
+  "name": "react-router-flux",
+  "version": "0.0.1",
+  "description": "ReactJS Router and Flux",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint src",
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ],
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6",
+      "jsx"
+    ]
+  },
+  "author": "Vipul A M <vipulnsward@gmail.com> (http://github.com/vipulnsward)",
+  "license": "MIT",
+  "homepage": "https://github.com/bigbinary/reactjs-by-example",
+  "devDependencies": {
+    "babel-core": "^5.4.7",
+    "babel-eslint": "^3.1.9",
+    "babel-loader": "^5.1.2",
+    "css-loader": "^0.15.5",
+    "eslint-plugin-react": "^2.3.0",
+    "file-loader": "^0.8.4",
+    "jest-cli": "0.7.1",
+    "react-hot-loader": "^1.2.7",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.8.2",
+    "babel-jest": "5.3.0"
+  },
+  "dependencies": {
+    "Faker": "^0.7.2",
+    "backbone": "^1.2.3",
+    "bootstrap-webpack": "0.0.3",
+    "bower-webpack-plugin": "^0.1.8",
+    "btoa": "^1.1.2",
+    "font-awesome-webpack": "0.0.3",
+    "history": "^1.13.1",
+    "jquery": "^2.1.4",
+    "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.2",
+    "react-addons-update": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.2",
+    "sort-by": "^1.1.1",
+    "url-loader": "^0.5.6",
+    "whatwg-fetch": "^0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigbinary/reactjs-by-example/tree/master/chapter7"
+  }
+}
