@@ -26,20 +26,41 @@ class Home extends React.Component {
     this.setState({catGenerator: catGenerator});
   }
 
+  faveUnfave(event){
+    let catCid = event.target.dataset;
+    let catGenerator = this.state.catGenerator;
+    let Cats = catGenerator.Cats;
+    let cat = Cats.get(catCid);
+    cat.set('faved', !cat.get('faved'));
+    catGenerator.Cats = Cats;
+    this.setState({catGenerator: catGenerator});
+  }
   render() {
     let Cats = this.state.catGenerator.Cats;
+
     return (
         <div>
           <div>
-            <ReactCSSTransitionGroup transitionName="cats" transitionEnterTimeout={500} transitionLeaveTimeout={300} transitionAppear={true} transitionAppearTimeout={500}>
+            <ReactCSSTransitionGroup transitionName="cats" transitionEnterTimeout={500} transitionLeaveTimeout={300}
+                                     transitionAppear={true} transitionAppearTimeout={500}>
               {Cats.map(cat => (
-                  <Link key={cat.cid} to={`/pictures/${cat.cid}`}
-                        state={{ modal: true, returnTo: this.props.location.pathname, cat: cat }}>
-                    <img style={{ margin: 10 }} src={cat.get('src')} height="100"/>
-                  </Link>
+                  <div key={cat.cid} >
+                    <Link to={`/pictures/${cat.cid}`}
+                          state={{ modal: true, returnTo: this.props.location.pathname, cat: cat }}>
+                      <img style={{ margin: 10 }} src={cat.get('src')} height="100"/>
+                    </Link>
+                    <ReactCSSTransitionGroup transitionName="faved" transitionEnterTimeout={500} transitionLeaveTimeout={300}
+                                             transitionAppear={true} transitionAppearTimeout={500}>
+                    {()=>{
+                      if(cat.get('faved') === true){
+                        return <span className="fa fa-star-o" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
+                      } else {
+                        return <span className="fa fa-star" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
+                      }
+                    }()}
+                    </ReactCSSTransitionGroup>
+                  </div>
               ))}
-              <span className="fa fa-star-o"></span>
-              <span className="fa fa-star"></span>
             </ReactCSSTransitionGroup>
           </div>
         </div>

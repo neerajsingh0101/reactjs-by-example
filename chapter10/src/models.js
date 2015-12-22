@@ -6,7 +6,8 @@ const PictureModel = Backbone.Model.extend({
   defaults: {
     src: 'http://lorempixel.com/601/600/cats/',
     name: 'Pusheen',
-    details: 'Pusheen is a Cat'
+    details: 'Pusheen is a Cat',
+    faved: false
   }
 });
 
