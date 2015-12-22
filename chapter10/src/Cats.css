@@ -4,7 +4,7 @@
 
 .cats-enter.cats-enter-active {
     opacity: 1;
-    transition: opacity 500ms ease-in;
+    transition: opacity 1500ms ease-in;
 }
 
 .cats-leave {
@@ -23,5 +23,5 @@
 
 .cats-appear.cats-appear-active {
     opacity: 1;
-    transition: opacity .5s ease-in;
+    transition: opacity 1.5s ease-in;
 }
