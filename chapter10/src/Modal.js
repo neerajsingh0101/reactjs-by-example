@@ -19,6 +19,8 @@ const Modal = React.createClass({
       <div style={this.styles}>
         <p><Link to={this.props.returnTo}>Back</Link></p>
         {this.props.children}
+        <h3 style="float:right">These cats are high on shrooms.</h3>
+        <p style="float:right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
       </div>
     )
   }

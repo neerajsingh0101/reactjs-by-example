@@ -25,3 +25,26 @@
     opacity: 1;
     transition: opacity 1.5s ease-in;
 }
+
+.fa {
+  transition: all .1s ease-in-out;
+  color: #666;
+}
+
+.fa:hover {
+  transform: scale(1.5);
+  color: #00A58F;
+}
+
+.fa:active {
+  transform: scale(2.5);
+  color: #00A58F;
+}
+
+.fa-star {
+  color: #00A58F;
+}
+
+.fa-star-o:active:before {
+  content: "\f005"!important;
+}

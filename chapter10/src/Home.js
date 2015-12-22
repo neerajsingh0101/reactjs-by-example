@@ -38,6 +38,8 @@ class Home extends React.Component {
                     <img style={{ margin: 10 }} src={cat.get('src')} height="100"/>
                   </Link>
               ))}
+              <span className="fa fa-star-o"></span>
+              <span className="fa fa-star"></span>
             </ReactCSSTransitionGroup>
           </div>
         </div>
