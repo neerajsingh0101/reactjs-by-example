@@ -63,8 +63,13 @@
     top: 0;
 }
 
-.fa-star {
-  color: #00A58F;
+
+.fa-star{
+  color: #fa0017;
+}
+
+.fa-star-o{
+    color: #fa0017;
 }
 
 .fa-star-o:active:before {
