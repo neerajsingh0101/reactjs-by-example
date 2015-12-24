@@ -31,14 +31,36 @@
   color: #666;
 }
 
-.fa:hover {
-  transform: scale(1.5);
-  color: #00A58F;
+
+.faved-enter {
+    transform: scale(1.5);
 }
 
-.fa:active {
-  transform: scale(2.5);
-  color: #00A58F;
+.faved-enter.faved-enter-active {
+    transform: scale(3);
+    transition: all .5s ease-in-out;
+}
+
+.faved-leave {
+    transform: translateX(-100%);
+    transform: scale(0);
+}
+
+.faved-leave.faved-leave-active {
+    transform: scale(0);
+    transition: all .1s ease-in-out;
+}
+
+.star{
+    display: inline-block;
+    width: 20px;
+    position: relative;
+}
+
+.star span{
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .fa-star {

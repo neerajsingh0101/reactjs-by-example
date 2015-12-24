@@ -44,18 +44,18 @@ class Home extends React.Component {
             <ReactCSSTransitionGroup transitionName="cats" transitionEnterTimeout={500} transitionLeaveTimeout={300}
                                      transitionAppear={true} transitionAppearTimeout={500}>
               {Cats.map(cat => (
-                  <div key={cat.cid} >
+                  <div key={cat.cid} style={{float: 'left'}}>
                     <Link to={`/pictures/${cat.cid}`}
                           state={{ modal: true, returnTo: this.props.location.pathname, cat: cat }}>
                       <img style={{ margin: 10 }} src={cat.get('src')} height="100"/>
                     </Link>
                     <ReactCSSTransitionGroup transitionName="faved" transitionEnterTimeout={500} transitionLeaveTimeout={300}
-                                             transitionAppear={true} transitionAppearTimeout={500}>
+                                             transitionAppear={true} transitionAppearTimeout={500} className="star">
                     {()=>{
                       if(cat.get('faved') === true){
-                        return <span className="fa fa-star-o" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
+                        return <span key={`${cat.cid}_${cat.get('faved')}`} className="fa fa-star-o" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
                       } else {
-                        return <span className="fa fa-star" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
+                        return <span key={`${cat.cid}_${cat.get('faved')}`} className="fa fa-star" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
                       }
                     }()}
                     </ReactCSSTransitionGroup>

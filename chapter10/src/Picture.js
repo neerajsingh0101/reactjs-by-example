@@ -4,13 +4,17 @@ import { PictureModel } from './models';
 const Picture = React.createClass({
   render() {
     let { location } = this.props;
-    let cat  = location.state.cat;
+    let cat = location.state.cat;
     console.log(this.props);
     return (
         <div>
-          <img src={cat.get('src')} style={{ height: '80%' }}/>
-          <h3 style={{float:'right'}}>Name: {cat.get('name')}.</h3>
-          <p style={{float:'right'}}>Details: {cat.get('details')} </p>
+          <div style={{ float: 'left', width: '40%' }}>
+            <img src={cat.get('src')} style={{ height: '80%' }}/>
+          </div>
+          <div style={{ float: 'left', width: '60%' }}>
+            <h3>Name: {cat.get('name')}.</h3>
+            <p>Details: {cat.get('details')} </p>
+          </div>
         </div>
     )
   }
