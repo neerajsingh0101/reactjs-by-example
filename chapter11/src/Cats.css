@@ -1,0 +1,72 @@
+.cats-enter {
+    opacity: 0.01;
+}
+
+.cats-enter.cats-enter-active {
+    opacity: 1;
+    transition: opacity 1500ms ease-in;
+}
+
+.cats-leave {
+    opacity: 1;
+}
+
+.cats-leave.cats-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+
+.cats-appear {
+    opacity: 0.01;
+}
+
+.cats-appear.cats-appear-active {
+    opacity: 1;
+    transition: opacity 1.5s ease-in;
+}
+
+.fa {
+  transition: all .1s ease-in-out;
+  color: #666;
+}
+
+
+.faved-enter {
+    transform: scale(1.5);
+}
+
+.faved-enter.faved-enter-active {
+    transform: scale(3);
+    transition: all .5s ease-in-out;
+}
+
+.faved-leave {
+    transform: translateX(-100%);
+    transform: scale(0);
+}
+
+.faved-leave.faved-leave-active {
+    transform: scale(0);
+    transition: all .1s ease-in-out;
+}
+
+.star{
+    display: inline-block;
+    width: 20px;
+    position: relative;
+}
+
+.star span{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.fa-star {
+  color: #00A58F;
+}
+
+.fa-star-o:active:before {
+  content: "\f005"!important;
+}
