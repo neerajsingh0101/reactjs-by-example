@@ -1,3 +1,6 @@
+import JSONUtil from '../utils/jsonutil'
+import ArrayUtil from '../utils/array'
+
 export const FILTER_BY_TWEETS = 'FILTER_BY_TWEETS';
 export const FILTER_BY_REDDITS = 'FILTER_BY_REDDITS';
 export const SYNC_TWEETS = 'SYNC_TWEETS';
@@ -16,23 +19,24 @@ export function filterReddits() {
 }
 
 
-export function syncReddits() {
+export function syncTweets(json) {
   return {
-    type: SYNC_TWEETS
+    type: SYNC_TWEETS,
+    tweets: json,
+    receivedAt: Date.now()
   }
 }
 
-export function syncTweets() {
+export function syncReddits(username, json) {
   return {
     type: SYNC_REDDITS
   }
 }
 
-function fetchPosts(reddit) {
+export function fetchTweets(username) {
   return dispatch => {
-    dispatch(requestPosts(reddit))
-    return fetch(`http://www.reddit.com/r/${reddit}.json`)
-        .then(response => response.json())
-        .then(json => dispatch(receivePosts(reddit, json)))
+    fetch('/tweets.json')
+        .then(JSONUtil.parseJSON)
+        .then(json => dispatch(syncTweets(json))).catch(JSONUtil.handleParseException)
   }
 }

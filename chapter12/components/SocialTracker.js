@@ -1,35 +1,23 @@
 import React, { Component, PropTypes } from 'react'
 import JSONUtil from '../utils/jsonutil'
 import ArrayUtil from '../utils/array'
+import {fetchTweets} from '../actions/social'
 import { Col, Grid, Row, Jumbotron, Button } from 'react-bootstrap';
 import '../styles/App.css'
 
 class SocialTracker extends Component {
   constructor() {
     super();
-    this.state = {tweets: []};
   }
 
   componentDidMount() {
-    this.fetchTweets();
-  }
-
-  setTweets(json) {
-    console.log(this);
-    console.log('parsed json', json)
-    this.setState({tweets: json})
-  }
-
-  fetchTweets() {
-    console.log(this);
-    fetch('/tweets.json')
-        .then(JSONUtil.parseJSON)
-        .then(::this.setTweets).catch(JSONUtil.handleParseException)
+    const { fetchTweets } = this.props;
+    fetchTweets('github');
   }
 
   render() {
+    console.log('render props');
     console.log(this.props);
-    console.log(this.state);
     return (
         <Grid>
           <Row>
@@ -43,9 +31,9 @@ class SocialTracker extends Component {
   }
 
   renderTweets() {
-    let tweetsCollection = ArrayUtil.in_groups_of(this.state.tweets, 3);
-    console.log(tweetsCollection);
-    if (this.state.tweets.length > 0) {
+    let {tweets} = this.props.social;
+    let tweetsCollection = ArrayUtil.in_groups_of(tweets, 3);
+    if (tweets.length > 0) {
       return tweetsCollection.map((tweets, index) => {
         console.log(tweets);
         return <Row key={`${tweets[0].id}${index}`}>
