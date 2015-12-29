@@ -1,19 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import JSONUtil from '../utils/jsonutil'
 import ArrayUtil from '../utils/array'
-import {fetchTweets} from '../actions/social'
 import { Col, Grid, Row, Jumbotron, Button, Input, Table } from 'react-bootstrap';
 import '../styles/App.css'
 
 class SocialTracker extends Component {
   constructor() {
     super();
-    this.state = {twitter: 'github', reddit: 'github'}
+    this.state = {twitter: 'twitter', reddit: 'twitter'}
   }
 
   componentDidMount() {
-    const { fetchTweets } = this.props;
-    fetchTweets('github');
+    this.syncFeed();
   }
 
   render() {
@@ -43,7 +41,7 @@ class SocialTracker extends Component {
               </tr>
               <tr>
                 <td>Reddit</td>
-                <td><Input type="text" addonBefore="@"/></td>
+                <td><Input onChange={::this.changeRedditSource} type="text" addonBefore="@" value={this.state.twitter}/></td>
               </tr>
               <tr>
                 <td colSpan="2"><Button bsStyle="primary" bsSize="large" onClick={::this.syncFeed}>Sync Feed</Button></td>
@@ -53,6 +51,7 @@ class SocialTracker extends Component {
              </Col>
           </Row>
           {this.renderTweets()}
+          {this.renderReddits()}
         </Grid>
     )
   }
@@ -61,8 +60,13 @@ class SocialTracker extends Component {
     this.setState({twitter: event.target.value});
   }
 
+  changeRedditSource(event){
+    this.setState({reddit: event.target.value});
+  }
+
   syncFeed(){
-    const { fetchTweets } = this.props;
+    const { fetchTweets, fetchReddits } = this.props;
+    fetchReddits(this.state.reddit);
     fetchTweets(this.state.twitter);
     console.log('syncFeed was called');
   }
@@ -76,6 +80,24 @@ class SocialTracker extends Component {
         return <Row key={`${tweets[0].id}${index}`}>
           {tweets.map((tweet) => {
             return <Col xs={4} md={4} key={tweet.id}>{tweet.text}</Col>;
+          })}
+        </Row>
+      });
+
+    } else {
+      return <div></div>
+    }
+  }
+
+  renderReddits() {
+    let {reddits} = this.props.social;
+    let redditCollection = ArrayUtil.in_groups_of(reddits, 3);
+    if (reddits.length > 0) {
+      return redditCollection.map((reddits, index) => {
+        console.log(reddits);
+        return <Row key={`${reddits[0].id}${index}`}>
+          {reddits.map((reddit) => {
+            return <Col xs={4} md={4} key={reddit.id}>{reddit.selftext}</Col>;
           })}
         </Row>
       });

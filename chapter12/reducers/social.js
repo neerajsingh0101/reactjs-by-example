@@ -8,6 +8,8 @@ export default function social(state = {tweets: [], reddits: [], feed: [] }, act
       return {...state, feed: []};
     case SYNC_TWEETS:
       return {...state, tweets: action.tweets};
+    case SYNC_REDDITS:
+      return {...state, reddits: action.reddits};
     default:
       return state
   }

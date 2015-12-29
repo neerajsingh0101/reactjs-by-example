@@ -27,9 +27,11 @@ export function syncTweets(json) {
   }
 }
 
-export function syncReddits(username, json) {
+export function syncReddits(json) {
   return {
-    type: SYNC_REDDITS
+    type: SYNC_REDDITS,
+    reddits: json.data.children.map(child => child.data),
+    receivedAt: Date.now()
   }
 }
 
@@ -38,5 +40,13 @@ export function fetchTweets(username) {
     fetch(`/tweets.json?username=${username}`)
         .then(JSONUtil.parseJSON)
         .then(json => dispatch(syncTweets(json))).catch(JSONUtil.handleParseException)
+  }
+}
+
+export function fetchReddits(topic) {
+  return dispatch => {
+    fetch(`https://www.reddit.com/r/${topic}.json`)
+        .then(JSONUtil.parseJSON)
+        .then(json => dispatch(syncReddits(json))).catch(JSONUtil.handleParseException)
   }
 }
