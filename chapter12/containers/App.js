@@ -1,16 +1,16 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Counter from '../components/Counter'
-import * as CounterActions from '../actions/counter'
+import SocialTracker from '../components/SocialTracker'
+import * as SocialActions from '../actions/social'
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    social: state.social
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch)
+  return bindActionCreators(SocialActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default connect(mapStateToProps, mapDispatchToProps)(SocialTracker)

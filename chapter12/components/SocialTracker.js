@@ -4,7 +4,7 @@ import ArrayUtil from '../utils/array'
 import { Col, Grid, Row, Jumbotron, Button } from 'react-bootstrap';
 import '../styles/App.css'
 
-class Counter extends Component {
+class SocialTracker extends Component {
   constructor() {
     super();
     this.state = {tweets: []};
@@ -28,6 +28,7 @@ class Counter extends Component {
   }
 
   render() {
+    console.log(this.props);
     console.log(this.state);
     return (
         <Grid>
@@ -60,4 +61,4 @@ class Counter extends Component {
   }
 }
 
-export default Counter
+export default SocialTracker

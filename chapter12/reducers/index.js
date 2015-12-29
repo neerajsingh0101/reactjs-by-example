@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
+import social from './social'
 
 const rootReducer = combineReducers({
-  counter
+  social
 })
 
 export default rootReducer
