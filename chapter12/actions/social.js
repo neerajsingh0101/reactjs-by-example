@@ -35,7 +35,7 @@ export function syncReddits(username, json) {
 
 export function fetchTweets(username) {
   return dispatch => {
-    fetch('/tweets.json')
+    fetch(`/tweets.json?username=${username}`)
         .then(JSONUtil.parseJSON)
         .then(json => dispatch(syncTweets(json))).catch(JSONUtil.handleParseException)
   }

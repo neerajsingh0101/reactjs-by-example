@@ -20,7 +20,8 @@ app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: webpack_config
 app.use(webpackHotMiddleware(compiler));
 
 app.get('/tweets.json', function (req, res) {
-  var params = {screen_name: 'github', include_rts: false};
+  console.log(req.query.username);
+  var params = {screen_name: req.query.username};
   client.get('statuses/user_timeline', params, function (error, tweets, response) {
     console.log(error);
     if (!error) {
