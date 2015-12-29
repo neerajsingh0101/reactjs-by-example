@@ -79,7 +79,7 @@ class SocialTracker extends Component {
         console.log(tweets);
         return <Row key={`${tweets[0].id}${index}`}>
           {tweets.map((tweet) => {
-            return <Col xs={4} md={4} key={tweet.id}>{tweet.text}</Col>;
+            return <Col md={4} key={tweet.id}>{tweet.text}</Col>;
           })}
         </Row>
       });
@@ -97,7 +97,7 @@ class SocialTracker extends Component {
         console.log(reddits);
         return <Row key={`${reddits[0].id}${index}`}>
           {reddits.map((reddit) => {
-            return <Col xs={4} md={4} key={reddit.id}>{reddit.selftext}</Col>;
+            return <Col md={4} key={reddit.id} className="reddit">{reddit.selftext}</Col>;
           })}
         </Row>
       });
