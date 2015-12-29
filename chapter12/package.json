@@ -1,21 +1,34 @@
 {
-  "name": "redux-counter-example",
-  "version": "0.0.0",
-  "description": "Redux counter example",
+  "name": "react-flux",
+  "version": "0.0.1",
+  "description": "ReactJS Router and Flux",
   "scripts": {
     "start": "node server.js",
     "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register --require ./test/setup.js",
     "test:watch": "npm test -- --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rackt/redux.git"
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ],
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6",
+      "jsx"
+    ]
   },
+  "author": "Vipul A M <vipulnsward@gmail.com> (http://github.com/vipulnsward)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rackt/redux/issues"
-  },
-  "homepage": "http://rackt.github.io/redux",
+  "homepage": "https://github.com/bigbinary/reactjs-by-example",
   "dependencies": {
     "exports-loader": "^0.6.2",
     "imports-loader": "^0.6.5",
