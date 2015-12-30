@@ -28,11 +28,11 @@ class SocialTracker extends Component {
 
           </Row>
           <Row>
-            <Col xs={6} md={6} mdOffset={2}>
-              <Table striped bordered condensed hover>
+            <Col xs={8} md={8} mdOffset={2}>
+              <Table striped  hover>
                 <thead>
                 <tr>
-                  <th>Feed Type</th>
+                  <th width='200'>Feed Type</th>
                   <th>Feed Source</th>
                 </tr>
                 </thead>
@@ -84,9 +84,9 @@ class SocialTracker extends Component {
         return <Row key={`${feedGroup[0].id}${index}`}>
           {feedGroup.map((feed) => {
             if (feed.type == 'tweet') {
-              return <Col md={4} key={feed.id}>{feed.text}</Col>;
+              return <Col md={4} key={feed.id}><div className="well twitter"><p>{feed.text}</p></div></Col>;
             } else {
-              return <Col md={4} key={feed.id} className="reddit">{feed.selftext}</Col>;
+              return <Col md={4} key={feed.id}><div className="well reddit"><p>{feed.selftext}</p></div></Col>;
             }
 
           })}
