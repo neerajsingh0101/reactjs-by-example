@@ -26,86 +26,75 @@ class SocialTracker extends Component {
 
           </Row>
           <Row>
-            <Col  xs={6} md={6} mdOffset={2}>
-            <Table striped bordered condensed hover>
-              <thead>
-              <tr>
-                <th>Feed Type</th>
-                <th>Feed Source</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Twitter</td>
-                <td><Input onChange={::this.changeTwitterSource} type="text" addonBefore="@" value={this.state.twitter}/></td>
-              </tr>
-              <tr>
-                <td>Reddit</td>
-                <td><Input onChange={::this.changeRedditSource} type="text" addonBefore="@" value={this.state.twitter}/></td>
-              </tr>
-              <tr>
-                <td colSpan="2"><Button bsStyle="primary" bsSize="large" onClick={::this.syncFeed}>Sync Feed</Button></td>
-              </tr>
-              </tbody>
-            </Table>
-             </Col>
+            <Col xs={6} md={6} mdOffset={2}>
+              <Table striped bordered condensed hover>
+                <thead>
+                <tr>
+                  <th>Feed Type</th>
+                  <th>Feed Source</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Twitter</td>
+                  <td><Input onChange={::this.changeTwitterSource} type="text" addonBefore="@"
+                             value={this.state.twitter}/></td>
+                </tr>
+                <tr>
+                  <td>Reddit</td>
+                  <td><Input onChange={::this.changeRedditSource} type="text" addonBefore="@"
+                             value={this.state.twitter}/></td>
+                </tr>
+                <tr>
+                  <td colSpan="2"><Button bsStyle="primary" bsSize="large" onClick={::this.syncFeed}>Sync Feed</Button>
+                  </td>
+                </tr>
+                </tbody>
+              </Table>
+            </Col>
           </Row>
-          {this.renderTweets()}
-          {this.renderReddits()}
+          {this.renderFeed()}
         </Grid>
     )
   }
 
-  changeTwitterSource(event){
+  changeTwitterSource(event) {
     this.setState({twitter: event.target.value});
   }
 
-  changeRedditSource(event){
+  changeRedditSource(event) {
     this.setState({reddit: event.target.value});
   }
 
-  syncFeed(){
+  syncFeed() {
     const { fetchTweets, fetchReddits } = this.props;
     fetchReddits(this.state.reddit);
     fetchTweets(this.state.twitter);
     console.log('syncFeed was called');
   }
 
-  renderTweets() {
-    let {tweets} = this.props.social;
-    let tweetsCollection = ArrayUtil.in_groups_of(tweets, 3);
-    if (tweets.length > 0) {
-      return tweetsCollection.map((tweets, index) => {
-        console.log(tweets);
-        return <Row key={`${tweets[0].id}${index}`}>
-          {tweets.map((tweet) => {
-            return <Col md={4} key={tweet.id}>{tweet.text}</Col>;
+  renderFeed() {
+    let {feed} = this.props.social;
+    let feedCollection = ArrayUtil.in_groups_of(feed, 3);
+    if (feed.length > 0) {
+      return feedCollection.map((feedGroup, index) => {
+        console.log(feedGroup);
+        return <Row key={`${feedGroup[0].id}${index}`}>
+          {feedGroup.map((feed) => {
+            if (feed.type == 'tweet') {
+              return <Col md={4} key={feed.id}>{feed.text}</Col>;
+            } else {
+              return <Col md={4} key={feed.id} className="reddit">{feed.selftext}</Col>;
+            }
+
           })}
         </Row>
       });
-
     } else {
       return <div></div>
     }
   }
 
-  renderReddits() {
-    let {reddits} = this.props.social;
-    let redditCollection = ArrayUtil.in_groups_of(reddits, 3);
-    if (reddits.length > 0) {
-      return redditCollection.map((reddits, index) => {
-        console.log(reddits);
-        return <Row key={`${reddits[0].id}${index}`}>
-          {reddits.map((reddit) => {
-            return <Col md={4} key={reddit.id} className="reddit">{reddit.selftext}</Col>;
-          })}
-        </Row>
-      });
-
-    } else {
-      return <div></div>
-    }
-  }
 }
 
 export default SocialTracker

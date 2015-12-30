@@ -22,7 +22,9 @@ export function filterReddits() {
 export function syncTweets(json) {
   return {
     type: SYNC_TWEETS,
-    tweets: json,
+    tweets: json.map((tweet) => {
+      return {...tweet, type: 'tweet'}
+    }),
     receivedAt: Date.now()
   }
 }
@@ -30,7 +32,9 @@ export function syncTweets(json) {
 export function syncReddits(json) {
   return {
     type: SYNC_REDDITS,
-    reddits: json.data.children.map(child => child.data),
+    reddits: json.data.children.map((child) => {
+      return {...child.data, type: 'reddit'}
+    }),
     receivedAt: Date.now()
   }
 }
