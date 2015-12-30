@@ -6,15 +6,17 @@ export const FILTER_BY_REDDITS = 'FILTER_BY_REDDITS';
 export const SYNC_TWEETS = 'SYNC_TWEETS';
 export const SYNC_REDDITS = 'SYNC_REDDITS';
 
-export function filterTweets() {
+export function filterTweets(event) {
   return {
-    type: FILTER_BY_TWEETS
+    type: FILTER_BY_TWEETS,
+    showTweets: event.target.checked
   }
 }
 
-export function filterReddits() {
+export function filterReddits(event) {
   return {
-    type: FILTER_BY_REDDITS
+    type: FILTER_BY_REDDITS,
+    showReddits: event.target.checked
   }
 }
 

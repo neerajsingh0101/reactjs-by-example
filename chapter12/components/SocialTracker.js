@@ -17,6 +17,8 @@ class SocialTracker extends Component {
   render() {
     console.log('render props');
     console.log(this.props);
+    let {filterTweets, filterReddits} = this.props;
+    let {showTweets, showReddits} = this.props.social;
     return (
         <Grid className="grid">
           <Row>
@@ -36,17 +38,17 @@ class SocialTracker extends Component {
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Twitter</td>
+                  <td><Input id='test' type="checkbox" label="Twitter" onChange={filterTweets} checked={showTweets}/></td>
                   <td><Input onChange={::this.changeTwitterSource} type="text" addonBefore="@"
                              value={this.state.twitter}/></td>
                 </tr>
                 <tr>
-                  <td>Reddit</td>
+                  <th><Input type="checkbox" label="Reddit" onChange={filterReddits} checked={showReddits}/></th>
                   <td><Input onChange={::this.changeRedditSource} type="text" addonBefore="@"
                              value={this.state.twitter}/></td>
                 </tr>
                 <tr>
-                  <td colSpan="2"><Button bsStyle="primary" bsSize="large" onClick={::this.syncFeed}>Sync Feed</Button>
+                  <td colSpan="3"><Button bsStyle="primary" bsSize="large" onClick={::this.syncFeed}>Sync Feed</Button>
                   </td>
                 </tr>
                 </tbody>
