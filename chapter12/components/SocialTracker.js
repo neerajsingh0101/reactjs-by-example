@@ -48,7 +48,8 @@ class SocialTracker extends Component {
                              value={this.state.twitter}/></td>
                 </tr>
                 <tr>
-                  <td colSpan="3"><Button bsStyle="primary" bsSize="large" onClick={::this.syncFeed}>Sync Feed</Button>
+                  <th></th>
+                  <td><Button bsStyle="primary" bsSize="large" onClick={::this.syncFeed}>Sync Feed</Button>
                   </td>
                 </tr>
                 </tbody>
