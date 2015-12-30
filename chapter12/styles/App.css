@@ -2,10 +2,14 @@
     opacity: 0.01;
 }
 
-.center-text{
+.center-text {
     text-align: center;
 }
 
-.reddit{
+.grid {
+    word-wrap: break-word;
+}
+
+.reddit {
 
 }

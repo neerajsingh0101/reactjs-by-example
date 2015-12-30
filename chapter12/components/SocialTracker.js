@@ -18,7 +18,7 @@ class SocialTracker extends Component {
     console.log('render props');
     console.log(this.props);
     return (
-        <Grid>
+        <Grid className="grid">
           <Row>
             <Jumbotron className="center-text">
               <h1>Social Media Tracker</h1>
