@@ -1,17 +1,9 @@
-.cats-enter {
-    opacity: 0.01;
-}
-
 .center-text {
     text-align: center;
 }
 
 .grid {
     word-wrap: break-word;
-}
-
-.reddit {
-
 }
 
 .twitter {
@@ -43,6 +35,3 @@
   opacity: .5;
 }
 
-.col-md-4 {
-
-}
