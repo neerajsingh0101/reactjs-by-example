@@ -87,7 +87,8 @@ class SocialTracker extends Component {
             if (feed.type == 'tweet') {
               return <Col md={4} key={feed.id}><div className="well twitter"><p>{feed.text}</p></div></Col>;
             } else {
-              return <Col md={4} key={feed.id}><div className="well reddit"><p>{feed.selftext}</p></div></Col>;
+              let display = feed.selftext == "" ? `${feed.title}: ${feed.url}` : feed.selftext;
+              return <Col md={4} key={feed.id}><div className="well reddit"><p>{display}</p></div></Col>;
             }
 
           })}
