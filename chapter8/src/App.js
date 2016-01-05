@@ -1,52 +1,14 @@
-require('btoa');
-require('whatwg-fetch');
-// require("bootstrap");
-// require("bootstrap-webpack");
 require("font-awesome-webpack");
 
-import React from 'react';
+import fetch  from 'whatwg-fetch';
+import React  from 'react';
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
+
 import RowAlternator from '../src/RowAlternator';
-import Spinner from '../src/Spinner';
-
-var BookRow = React.createClass({
-  render() {
-    return(
-      <tr style={this.props.style}>
-        <td>{this.props.title}</td>
-        <td>{(this.props.author_name || []).join(', ')}</td>
-        <td>{this.props.edition_count}</td>
-      </tr>
-    );
-  }
-});
-
-var BookList = React.createClass({
-  render() {
-    return (
-      <div className="row">
-        <div className="col-lg-8 col-lg-offset-2">
-          <span className='text-center'>
-            Total Results: {this.props.searchCount}
-          </span>
-          <table className="table table-stripped">
-            <thead>
-              <tr>
-                <th><a href="#" onClick={this.props._sortByTitle}>Title</a></th>
-                <th>Author</th>
-                <th>No. of Editions</th>
-              </tr>
-            </thead>
-            <RowAlternator firstColor="white" secondColor="lightgrey">
-              {this.props.children}
-            </RowAlternator>
-          </table>
-        </div>
-      </div>
-    );
-  }
-});
+import Spinner       from '../src/Spinner';
+import BookRow       from '../src/BookRow';
+import BookList      from '../src/BookList';
 
 export default React.createClass({
   getInitialState() {
