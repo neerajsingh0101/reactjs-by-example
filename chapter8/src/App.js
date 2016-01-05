@@ -48,8 +48,8 @@ var BookList = React.createClass({
   }
 });
 
-var App = React.createClass({
-  getInitialState(){
+export default React.createClass({
+  getInitialState() {
     return { books: [],
              totalBooks: 0,
              searchCompleted: false,
@@ -143,6 +143,3 @@ var App = React.createClass({
     }
   }
 });
-
-
-module.exports = App;
