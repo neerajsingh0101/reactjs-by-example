@@ -2,7 +2,7 @@ require('btoa');
 require('whatwg-fetch');
 // require("bootstrap");
 // require("bootstrap-webpack");
-// require("font-awesome-webpack");
+require("font-awesome-webpack");
 
 import React from 'react';
 import Update from 'react-addons-update';
