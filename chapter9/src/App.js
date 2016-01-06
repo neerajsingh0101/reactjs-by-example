@@ -7,13 +7,11 @@ import Modal from './Modal'
 const App = React.createClass({
 
   componentWillReceiveProps(nextProps) {
-    // if we changed routes...
     if ((
             nextProps.location.key !== this.props.location.key &&
             nextProps.location.state &&
             nextProps.location.state.modal
         )) {
-      // save the old children (just like animation)
       this.previousChildren = this.props.children
     }
   },
