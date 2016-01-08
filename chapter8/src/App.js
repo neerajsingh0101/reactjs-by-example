@@ -5,10 +5,10 @@ import React  from 'react';
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
 
-import RowAlternator from '../src/RowAlternator';
-import Spinner       from '../src/Spinner';
-import BookRow       from '../src/BookRow';
-import BookList      from '../src/BookList';
+import Spinner from '../src/Spinner';
+import BookRow from '../src/BookRow';
+import BookList from '../src/BookList';
+import Form from '../src/Form';
 
 export default React.createClass({
   getInitialState() {
@@ -19,29 +19,7 @@ export default React.createClass({
              sorting: 'asc' };
   },
 
-  render() {
-    let tabStyles = {paddingTop: '5%'};
-
-    return (
-      <div className='container'>
-        <div className="row" style={tabStyles}>
-          <div className="col-lg-8 col-lg-offset-2">
-            <h4>Open Library | Search any book you want!</h4>
-            <div className="input-group">
-              <input type="text" className="form-control" placeholder="Search books..." ref='searchInput'/>
-              <span className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={this._performSearch}>Go!</button>
-              </span>
-            </div>
-          </div>
-        </div>
-        {this._displaySearchResults()}
-      </div>
-    );
-  },
-
-  _performSearch() {
-    let searchTerm = this.refs.searchInput.value;
+  _performSearch(searchTerm) {
     this.setState({searchCompleted: false, searching: true});
     this._searchOpenLibrary(searchTerm);
   },
@@ -62,6 +40,7 @@ export default React.createClass({
   },
 
   _fetchData(url) {
+    console.log(url);
     return fetch(url).then(this._parseJSON).catch(function (ex) {
       console.log('Parsing failed', ex)
     });
@@ -103,5 +82,23 @@ export default React.createClass({
         </BookList>
       );
     }
+  },
+
+  render() {
+    let tabStyles = {paddingTop: '5%'};
+
+    return (
+      <div className='container'>
+        <div className="row" style={tabStyles}>
+          <div className="col-lg-8 col-lg-offset-2">
+            <h1>Open Library | Search any book you want!</h1>
+          </div>
+        </div>
+        <Form style={tabStyles}
+              performSearch={this._performSearch}>
+        </Form>
+        {this._displaySearchResults()}
+      </div>
+    );
   }
 });
