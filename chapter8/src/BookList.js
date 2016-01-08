@@ -1,4 +1,5 @@
 import React from 'react';
+import RowAlternator from '../src/RowAlternator';
 
 export default React.createClass({
   render() {
