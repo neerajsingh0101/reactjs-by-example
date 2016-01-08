@@ -9,6 +9,7 @@ import Spinner from '../src/Spinner';
 import BookRow from '../src/BookRow';
 import BookList from '../src/BookList';
 import Form from '../src/Form';
+import Header from '../src/Header';
 
 export default React.createClass({
   getInitialState() {
@@ -85,16 +86,12 @@ export default React.createClass({
   },
 
   render() {
-    let tabStyles = {paddingTop: '5%'};
+    let style = {paddingTop: '5%'};
 
     return (
       <div className='container'>
-        <div className="row" style={tabStyles}>
-          <div className="col-lg-8 col-lg-offset-2">
-            <h1>Open Library | Search any book you want!</h1>
-          </div>
-        </div>
-        <Form style={tabStyles}
+        <Header style={style}></Header>
+        <Form style={style}
               performSearch={this._performSearch}>
         </Form>
         {this._displaySearchResults()}
