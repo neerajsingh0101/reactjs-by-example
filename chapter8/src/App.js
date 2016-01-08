@@ -1,6 +1,6 @@
 require("font-awesome-webpack");
+require("whatwg-fetch");
 
-import fetch  from 'whatwg-fetch';
 import React  from 'react';
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
