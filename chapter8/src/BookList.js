@@ -2,6 +2,18 @@ import React from 'react';
 import RowAlternator from '../src/RowAlternator';
 
 export default React.createClass({
+  getInitialState() {
+    return ({
+      colors: ['grey', 'lightgreen', 'yellow', 'lightblue', 'lightgrey']
+    })
+  },
+
+  _selectRandomColor() {
+    let random = this.state.colors[Math.floor(Math.random()*this.state.colors.length)];
+    console.log(random);
+    return random;
+  },
+
   render() {
     return (
       <div className="row">
@@ -18,7 +30,7 @@ export default React.createClass({
                 <th><h3>No. of Editions</h3></th>
               </tr>
             </thead>
-            <RowAlternator firstColor="white" secondColor="lightgrey">
+            <RowAlternator firstColor="white" secondColor={this._selectRandomColor()}>
               {this.props.children}
             </RowAlternator>
           </table>
