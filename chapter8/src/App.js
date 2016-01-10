@@ -15,13 +15,17 @@ export default React.createClass({
   getInitialState() {
     return { books: [],
              totalBooks: 0,
-             searchCompleted: false,
+             offset: 100,
              searching: false,
-             sorting: 'asc' };
+             sorting: 'asc',
+             page: 1,
+             searchTerm: '',
+             totalPages: 1
+    };
   },
 
   _performSearch(searchTerm) {
-    this.setState({searchCompleted: false, searching: true});
+    this.setState({searching: true, searchTerm: searchTerm});
     this._searchOpenLibrary(searchTerm);
   },
 
@@ -29,15 +33,27 @@ export default React.createClass({
     return response.json();
   },
 
+  _searchAgain() {
+    if (this.state.page > this.state.totalPages) {
+      this.setState({searching: false});
+    } else {
+      this._searchOpenLibrary(this.state.searchTerm);
+    }
+  },
+
   _updateState(response) {
     let jsonResponse = response;
+    let newBooks = this.state.books.concat(jsonResponse.docs);
+    let totalPages = jsonResponse.numFound / this.state.offset + 1;
+    let nextPage = this.state.page + 1;
 
     this.setState({
-      books: jsonResponse.docs,
+      books: newBooks,
       totalBooks: jsonResponse.numFound,
-      searchCompleted: true,
-      searching: false
-    });
+      page: nextPage,
+      totalPages: totalPages
+    }, this._searchAgain);
+
   },
 
   _fetchData(url) {
@@ -48,7 +64,7 @@ export default React.createClass({
   },
 
   _searchOpenLibrary(searchTerm) {
-    let openlibraryURI = `https://openlibrary.org/search.json?q=${searchTerm}`;
+    let openlibraryURI = `https://openlibrary.org/search.json?q=${searchTerm}&page=${this.state.page}`;
     this._fetchData(openlibraryURI).then(this._updateState);
   },
 
@@ -64,6 +80,7 @@ export default React.createClass({
     return this.state.books.map((book, idx) => {
       return (
         <BookRow key={idx}
+                 index={idx + 1}
                  title={book.title}
                  author_name={book.author_name}
                  edition_count={book.edition_count} />
@@ -71,30 +88,20 @@ export default React.createClass({
     })
   },
 
-  _displaySearchResults() {
-    if (this.state.searching) {
-      return <Spinner />;
-    } else if (this.state.searchCompleted) {
-      return (
-        <BookList
-            searchCount={this.state.totalBooks}
-            _sortByTitle={this._sortByTitle}>
-          {this._renderBooks()}
-        </BookList>
-      );
-    }
-  },
-
   render() {
     let style = {paddingTop: '5%'};
-
     return (
       <div className='container'>
         <Header style={style}></Header>
         <Form style={style}
               performSearch={this._performSearch}>
         </Form>
-        {this._displaySearchResults()}
+        <BookList
+            searchCount={this.state.totalBooks}
+            _sortByTitle={this._sortByTitle}>
+          {this._renderBooks()}
+        </BookList>
+        { this.state.searching ? <Spinner /> : null }
       </div>
     );
   }
