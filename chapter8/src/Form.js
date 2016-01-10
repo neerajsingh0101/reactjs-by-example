@@ -10,8 +10,6 @@ export default React.createClass({
   },
 
   render() {
-    console.log("Rendering form");
-
     return (
       <div className="row" style={this.props.style}>
         <div>
