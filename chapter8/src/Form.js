@@ -10,16 +10,18 @@ export default React.createClass({
   },
 
   render() {
+    console.log("Rendering form");
+
     return (
       <div className="row" style={this.props.style}>
-        <div className="col-lg-8 col-lg-offset-2">
+        <div>
           <div className="input-group">
             <input type="text"
-                   className="form-control"
+                   className="form-control input-lg"
                    placeholder="Search books..."
                    onChange={(event) => { this.setState({searchTerm: event.target.value}) }}/>
             <span className="input-group-btn">
-              <button className="btn btn-default"
+              <button className="btn btn-primary btn-lg"
                       type="button"
                       onClick={this._submitForm}>
                 Go!

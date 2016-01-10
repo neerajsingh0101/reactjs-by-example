@@ -5,16 +5,17 @@ export default React.createClass({
   render() {
     return (
       <div className="row">
-        <div className="col-lg-8 col-lg-offset-2">
+        <div>
           <span className='text-center'>
-            Total Results: {this.props.searchCount}
+            <h3>Total Results: {this.props.searchCount}</h3>
           </span>
           <table className="table table-stripped">
             <thead>
               <tr>
-                <th><a href="#" onClick={this.props._sortByTitle}>Title</a></th>
-                <th>Author</th>
-                <th>No. of Editions</th>
+                <th></th>
+                <th><h3><a href="#" onClick={this.props._sortByTitle}>Title</a></h3></th>
+                <th><h3>Author</h3></th>
+                <th><h3>No. of Editions</h3></th>
               </tr>
             </thead>
             <RowAlternator firstColor="white" secondColor="lightgrey">

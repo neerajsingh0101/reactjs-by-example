@@ -4,9 +4,10 @@ export default React.createClass({
   render() {
     return(
       <tr style={this.props.style}>
-        <td>{this.props.title}</td>
-        <td>{(this.props.author_name || []).join(', ')}</td>
-        <td>{this.props.edition_count}</td>
+        <td><h4>#{this.props.index}</h4></td>
+        <td><h4>{this.props.title}</h4></td>
+        <td><h4>{(this.props.author_name || []).join(', ')}</h4></td>
+        <td><h4>{this.props.edition_count}</h4></td>
       </tr>
     );
   }
