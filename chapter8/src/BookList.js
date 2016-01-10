@@ -9,9 +9,9 @@ export default React.createClass({
   },
 
   _selectRandomColor() {
-    let random = this.state.colors[Math.floor(Math.random()*this.state.colors.length)];
-    console.log(random);
-    return random;
+    let randomColor = this.state.colors[Math.floor(Math.random()*this.state.colors.length)];
+    console.log(randomColor);
+    return randomColor;
   },
 
   render() {

@@ -57,7 +57,6 @@ export default React.createClass({
   },
 
   _fetchData(url) {
-    console.log(url);
     return fetch(url).then(this._parseJSON).catch(function (ex) {
       console.log('Parsing failed', ex)
     });
