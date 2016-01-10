@@ -95,11 +95,15 @@ export default React.createClass({
         <Form style={style}
               performSearch={this._performSearch}>
         </Form>
-        <BookList
-            searchCount={this.state.totalBooks}
-            _sortByTitle={this._sortByTitle}>
-          {this._renderBooks()}
-        </BookList>
+
+        {this.state.totalBooks > 0 ?
+         <BookList
+             searchCount={this.state.totalBooks}
+             _sortByTitle={this._sortByTitle}>
+           {this._renderBooks()}
+         </BookList>
+       : null }
+
         { this.state.searching ? <Spinner /> : null }
       </div>
     );
