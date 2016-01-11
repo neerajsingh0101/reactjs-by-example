@@ -1,13 +1,16 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default React.createClass({
+  mixins: [PureRenderMixin],
+
   getInitialState() {
     return { searchTerm: '' };
   },
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return false;
-  },
+  // shouldComponentUpdate(nextProps, nextState) {
+  // return false;
+  // },
 
   _submitForm() {
     this.props.performSearch(this.state.searchTerm);
