@@ -5,6 +5,10 @@ export default React.createClass({
     return { searchTerm: '' };
   },
 
+  shouldCompoentUpdate() {
+    return false;
+  },
+
   _submitForm() {
     this.props.performSearch(this.state.searchTerm);
   },
