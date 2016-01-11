@@ -4,6 +4,7 @@ require("whatwg-fetch");
 import React  from 'react';
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
+import Immutable from 'immutable';
 
 import Spinner from '../src/Spinner';
 import BookRow from '../src/BookRow';
@@ -88,7 +89,7 @@ export default React.createClass({
   },
 
   render() {
-    let style = {paddingTop: '5%'};
+    let style = Immutable.Map({paddingTop: '5%'});
     return (
       <div className='container'>
         <Header style={style}></Header>
