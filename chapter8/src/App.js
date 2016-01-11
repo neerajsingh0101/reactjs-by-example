@@ -1,86 +1,32 @@
-require('btoa');
-require('whatwg-fetch');
-// require("bootstrap");
-// require("bootstrap-webpack");
 require("font-awesome-webpack");
+require("whatwg-fetch");
 
-import React from 'react';
+import React  from 'react';
 import Update from 'react-addons-update';
 import sortBy from 'sort-by';
-import RowAlternator from '../src/RowAlternator';
+import Immutable from 'immutable';
+
 import Spinner from '../src/Spinner';
+import BookRow from '../src/BookRow';
+import BookList from '../src/BookList';
+import Form from '../src/Form';
+import Header from '../src/Header';
 
-var BookRow = React.createClass({
-  render() {
-    return(
-      <tr style={this.props.style}>
-        <td>{this.props.title}</td>
-        <td>{(this.props.author_name || []).join(', ')}</td>
-        <td>{this.props.edition_count}</td>
-      </tr>
-    );
-  }
-});
-
-var BookList = React.createClass({
-  render() {
-    return (
-      <div className="row">
-        <div className="col-lg-8 col-lg-offset-2">
-          <span className='text-center'>
-            Total Results: {this.props.searchCount}
-          </span>
-          <table className="table table-stripped">
-            <thead>
-              <tr>
-                <th><a href="#" onClick={this.props._sortByTitle}>Title</a></th>
-                <th>Author</th>
-                <th>No. of Editions</th>
-              </tr>
-            </thead>
-            <RowAlternator firstColor="white" secondColor="lightgrey">
-              {this.props.children}
-            </RowAlternator>
-          </table>
-        </div>
-      </div>
-    );
-  }
-});
-
-var App = React.createClass({
-  getInitialState(){
+export default React.createClass({
+  getInitialState() {
     return { books: [],
              totalBooks: 0,
-             searchCompleted: false,
+             offset: 100,
              searching: false,
-             sorting: 'asc' };
+             sorting: 'asc',
+             page: 1,
+             searchTerm: '',
+             totalPages: 1
+    };
   },
 
-  render() {
-    let tabStyles = {paddingTop: '5%'};
-
-    return (
-      <div className='container'>
-        <div className="row" style={tabStyles}>
-          <div className="col-lg-8 col-lg-offset-2">
-            <h4>Open Library | Search any book you want!</h4>
-            <div className="input-group">
-              <input type="text" className="form-control" placeholder="Search books..." ref='searchInput'/>
-              <span className="input-group-btn">
-                <button className="btn btn-default" type="button" onClick={this._performSearch}>Go!</button>
-              </span>
-            </div>
-          </div>
-        </div>
-        {this._displaySearchResults()}
-      </div>
-    );
-  },
-
-  _performSearch() {
-    let searchTerm = this.refs.searchInput.value;
-    this.setState({searchCompleted: false, searching: true});
+  _performSearch(searchTerm) {
+    this.setState({searching: true, searchTerm: searchTerm});
     this._searchOpenLibrary(searchTerm);
   },
 
@@ -88,15 +34,27 @@ var App = React.createClass({
     return response.json();
   },
 
+  _searchAgain() {
+    if (this.state.page > this.state.totalPages) {
+      this.setState({searching: false});
+    } else {
+      this._searchOpenLibrary(this.state.searchTerm);
+    }
+  },
+
   _updateState(response) {
     let jsonResponse = response;
+    let newBooks = this.state.books.concat(jsonResponse.docs);
+    let totalPages = jsonResponse.numFound / this.state.offset + 1;
+    let nextPage = this.state.page + 1;
 
     this.setState({
-      books: jsonResponse.docs,
+      books: newBooks,
       totalBooks: jsonResponse.numFound,
-      searchCompleted: true,
-      searching: false
-    });
+      page: nextPage,
+      totalPages: totalPages
+    }, this._searchAgain);
+
   },
 
   _fetchData(url) {
@@ -106,7 +64,7 @@ var App = React.createClass({
   },
 
   _searchOpenLibrary(searchTerm) {
-    let openlibraryURI = `https://openlibrary.org/search.json?q=${searchTerm}`;
+    let openlibraryURI = `https://openlibrary.org/search.json?q=${searchTerm}&page=${this.state.page}`;
     this._fetchData(openlibraryURI).then(this._updateState);
   },
 
@@ -122,6 +80,7 @@ var App = React.createClass({
     return this.state.books.map((book, idx) => {
       return (
         <BookRow key={idx}
+                 index={idx + 1}
                  title={book.title}
                  author_name={book.author_name}
                  edition_count={book.edition_count} />
@@ -129,20 +88,25 @@ var App = React.createClass({
     })
   },
 
-  _displaySearchResults() {
-    if (this.state.searching) {
-      return <Spinner />;
-    } else if (this.state.searchCompleted) {
-      return (
-        <BookList
-            searchCount={this.state.totalBooks}
-            _sortByTitle={this._sortByTitle}>
-          {this._renderBooks()}
-        </BookList>
-      );
-    }
+  render() {
+    let style = Immutable.Map({paddingTop: '5%'});
+    return (
+      <div className='container'>
+        <Header style={style}></Header>
+        <Form style={style}
+              performSearch={this._performSearch}>
+        </Form>
+
+        {this.state.totalBooks > 0 ?
+         <BookList
+             searchCount={this.state.totalBooks}
+             _sortByTitle={this._sortByTitle}>
+           {this._renderBooks()}
+         </BookList>
+       : null }
+
+        { this.state.searching ? <Spinner /> : null }
+      </div>
+    );
   }
 });
-
-
-module.exports = App;
