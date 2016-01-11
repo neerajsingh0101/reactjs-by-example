@@ -1,5 +1,7 @@
 import React from 'react';
 import RowAlternator from '../src/RowAlternator';
+import BookListHeader from '../src/BookListHeader';
+import BookTableHeader from '../src/BookTableHeader';
 
 export default React.createClass({
   getInitialState() {
@@ -18,18 +20,10 @@ export default React.createClass({
     return (
       <div className="row">
         <div>
-          <span className='text-center'>
-            <h3>Total Results: {this.props.searchCount}</h3>
-          </span>
+          <BookListHeader searchCount={this.props.searchCount}>
+          </BookListHeader>
           <table className="table table-stripped">
-            <thead>
-              <tr>
-                <th></th>
-                <th><h3><a href="#" onClick={this.props._sortByTitle}>Title</a></h3></th>
-                <th><h3>Author</h3></th>
-                <th><h3>No. of Editions</h3></th>
-              </tr>
-            </thead>
+            <BookTableHeader sortByTitle={this.props._sortByTitle}></BookTableHeader>
             <RowAlternator firstColor="white" secondColor={this._selectRandomColor()}>
               {this.props.children}
             </RowAlternator>

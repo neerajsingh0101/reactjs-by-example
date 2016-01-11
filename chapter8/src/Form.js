@@ -5,7 +5,7 @@ export default React.createClass({
     return { searchTerm: '' };
   },
 
-  shouldCompoentUpdate() {
+  shouldComponentUpdate(nextProps, nextState) {
     return false;
   },
 
