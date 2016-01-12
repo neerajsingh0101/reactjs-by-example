@@ -76,18 +76,6 @@ export default React.createClass({
     this.setState(newState);
   },
 
-  _renderBooks() {
-    return this.state.books.map((book, idx) => {
-      return (
-        <BookRow key={idx}
-                 index={idx + 1}
-                 title={book.title}
-                 author_name={book.author_name}
-                 edition_count={book.edition_count} />
-      );
-    })
-  },
-
   render() {
     let style = Immutable.Map({paddingTop: '5%'});
     return (
@@ -100,8 +88,8 @@ export default React.createClass({
         {this.state.totalBooks > 0 ?
          <BookList
              searchCount={this.state.totalBooks}
-             _sortByTitle={this._sortByTitle}>
-           {this._renderBooks()}
+             _sortByTitle={this._sortByTitle}
+             books={this.state.books}>
          </BookList>
        : null }
 
