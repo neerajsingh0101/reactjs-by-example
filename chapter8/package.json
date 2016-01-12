@@ -1,7 +1,7 @@
 {
   "name": "react-addons-examples",
   "version": "0.0.1",
-  "description": "ReactJS Addons examples",
+  "description": "ReactJS PERF tools examples",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
