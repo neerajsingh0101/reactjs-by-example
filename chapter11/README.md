@@ -1,7 +1,7 @@
 react-addons
 ===========
 
-Examples of React addons
+Examples of testing React apps
 
 ### Usage
 
