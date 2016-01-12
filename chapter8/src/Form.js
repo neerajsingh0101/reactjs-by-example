@@ -2,15 +2,17 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default React.createClass({
-  mixins: [PureRenderMixin],
+  // Uncomment following code and comment shouldComponentUpdate to
+  // see performance dip due to function reference this.props.performSearch.
+  // mixins: [PureRenderMixin],
 
   getInitialState() {
     return { searchTerm: '' };
   },
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  // return false;
-  // },
+  shouldComponentUpdate(nextProps, nextState) {
+   return false;
+  },
 
   _submitForm() {
     this.props.performSearch(this.state.searchTerm);
