@@ -19,19 +19,17 @@ var React = require('react');
 var SocialStore = require('../stores/SocialStore');
 var SocialActions = require('../actions/SocialActions');
 var ReactBootstrap =  require('react-bootstrap');
-var Col =  ReactBootstrap.Col, Grid =  ReactBootstrap.Grid, Row =  ReactBootstrap.Row,
-    Jumbotron =  ReactBootstrap.Jumbotron, Button =  ReactBootstrap.Button, Input=  ReactBootstrap.Input, Table =  ReactBootstrap.Table ;
+var Col =  ReactBootstrap.Col, Grid =  ReactBootstrap.Grid, Row =  ReactBootstrap.Row;
 
 
 var SocialTracker = React.createClass({
 
   getInitialState: function() {
-    return assign({twitter: 'twitter', reddit: 'twitter'}, SocialStore.getState());
+    return assign({}, SocialStore.getState());
   },
 
   componentDidMount: function() {
     SocialStore.addChangeListener(this._onChange);
-    this.syncFeed();
   },
 
   componentWillUnmount: function() {
@@ -39,64 +37,15 @@ var SocialTracker = React.createClass({
   },
 
   render: function() {
-    console.log('render props');
-    console.log(this.props);
     return (
         <Grid className="grid">
-          <Row>
-            <Jumbotron className="center-text">
-              <h1>Social Media Tracker</h1>
-            </Jumbotron>
-
-          </Row>
-          <Row>
-            <Col xs={8} md={8} mdOffset={2}>
-              <Table striped  hover>
-                <thead>
-                <tr>
-                  <th width='200'>Feed Type</th>
-                  <th>Feed Source</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td><Input id='test' type="checkbox" label="Twitter" onChange={SocialActions.filterTweets} checked={this.state.showTweets}/></td>
-                  <td><Input onChange={this.changeTwitterSource} type="text" addonBefore="@" value={this.state.twitter}/></td>
-                </tr>
-                <tr>
-                  <th><Input type="checkbox" label="Reddit" onChange={SocialActions.filterReddits} checked={this.state.showReddits}/></th>
-                  <td><Input onChange={this.changeRedditSource} type="text" addonBefore="@"
-                             value={this.state.twitter}/></td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td><Button bsStyle="primary" bsSize="large" onClick={this.syncFeed}>Sync Feed</Button>
-                  </td>
-                </tr>
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
+          <Header/>
+          <MainSection/>
           {this.renderFeed()}
         </Grid>
     )
   },
 
-  changeTwitterSource: function(event) {
-    console.log('Atleast this works?');
-    this.setState({twitter: event.target.value});
-  },
-
-  changeRedditSource: function(event) {
-    console.log('Atleast this works?');
-    this.setState({reddit: event.target.value});
-  },
-
-  syncFeed: function() {
-    console.log('syncFeed was called');
-    SocialActions.fetchReddits(this.state.reddit);
-    SocialActions.fetchTweets(this.state.twitter);
-  },
 
   renderFeed: function() {
     var feed = this.state.feed;
@@ -112,7 +61,6 @@ var SocialTracker = React.createClass({
               var display = feed.selftext == "" ? `${feed.title}: ${feed.url}` : feed.selftext;
               return <Col md={4} key={feed.id}><div className="well reddit"><p>{display}</p></div></Col>;
             }
-
           })}
         </Row>
       });

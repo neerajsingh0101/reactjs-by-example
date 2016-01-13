@@ -8,18 +8,18 @@
  */
 
 var React = require('react');
-var SocialActions = require('../actions/SocialActions');
+var ReactBootstrap =  require('react-bootstrap');
+var Row =  ReactBootstrap.Row, Jumbotron =  ReactBootstrap.Jumbotron;
 
 var Header = React.createClass({
 
-  /**
-   * @return {object}
-   */
-  render: function() {
+  render: function () {
     return (
-      <header id="header">
-        Header
-      </header>
+        <Row>
+          <Jumbotron className="center-text">
+            <h1>Social Media Tracker</h1>
+          </Jumbotron>
+        </Row>
     );
   }
 
