@@ -1,4 +1,4 @@
 /js/bundle.js
 /js/bundle.min.js
 .bundle.js
-config.js
+./config.js
