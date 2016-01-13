@@ -1,9 +1,9 @@
 {
-  "name": "todomvc-flux",
-  "version": "0.0.3",
-  "description": "Example Flux architecture.",
-  "repository": "https://github.com/facebook/flux",
-  "main": "js/app.js",
+  "name": "reactjs-by-example",
+  "version": "0.0.1",
+  "description": "Social Media Tracker.",
+  "repository": "https://github.com/bigbinary/reactjs-by-example",
+  "main": "server.js",
   "dependencies": {
     "classnames": "^2.1.3",
     "express": "^4.13.3",
@@ -30,7 +30,7 @@
     "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
     "test": "jest"
   },
-  "author": "Bill Fisher",
+  "author": ["Bill Fisher", "Vipul A M"],
   "browserify": {
     "transform": [
       "reactify",
