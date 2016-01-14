@@ -52,7 +52,6 @@ var SocialActions = {
   },
 
   fetchTweets: function (username) {
-    console.log('Hello?');
     fetch(`/tweets.json?username=${username}`)
         .then(JSONUtil.parseJSON)
         .then(json => SocialActions.syncTweets(json)).catch(JSONUtil.handleParseException)

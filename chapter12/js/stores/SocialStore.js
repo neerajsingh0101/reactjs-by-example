@@ -18,7 +18,6 @@ var _ = require('underscore');
 
 var CHANGE_EVENT = 'change';
 
-
 var _state = {
   tweets: [],
   reddits: [],
@@ -68,8 +67,6 @@ var SocialStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (action) {
-  console.log(action);
-
   switch (action.type) {
 
     case SocialConstants.FILTER_BY_TWEETS:
