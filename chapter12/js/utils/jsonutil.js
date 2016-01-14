@@ -8,8 +8,7 @@ var JSONUtil = (function () {
   }
 
 
-  return {'parseJSON': parseJSON}
-  return {'handleParseException': handleParseException}
+  return {'parseJSON': parseJSON, 'handleParseException': handleParseException}
 }());
 
 module.exports = JSONUtil;
