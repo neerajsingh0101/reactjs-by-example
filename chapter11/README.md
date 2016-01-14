@@ -1,7 +1,7 @@
-react-addons
+react-tools
 ===========
 
-Examples of React addons
+Examples of React Tools
 
 ### Usage
 

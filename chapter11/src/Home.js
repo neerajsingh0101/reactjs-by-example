@@ -51,13 +51,13 @@ class Home extends React.Component {
                     </Link>
                     <ReactCSSTransitionGroup transitionName="faved" transitionEnterTimeout={500} transitionLeaveTimeout={300}
                                              transitionAppear={true} transitionAppearTimeout={500} className="star">
-                    {()=>{
-                      if(cat.get('faved') === true){
+                    {(()=>{
+                      if (cat.get('faved') === true) {
                         return <span key={`${cat.cid}_${cat.get('faved')}`} className="fa fa-star" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
                       } else {
                         return <span key={`${cat.cid}_${cat.get('faved')}`} className="fa fa-star-o" onClick={::this.faveUnfave} data-cid={cat.cid}></span>;
                       }
-                    }()}
+                    })()}
                     </ReactCSSTransitionGroup>
                   </div>
               ))}
