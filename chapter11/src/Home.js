@@ -26,7 +26,7 @@ class Home extends React.Component {
     this.setState({catGenerator: catGenerator});
   }
 
-  faveUnfave(event){
+  faveUnfave(event) {
     let catCid = event.target.dataset;
     let catGenerator = this.state.catGenerator;
     let Cats = catGenerator.Cats;
@@ -35,6 +35,7 @@ class Home extends React.Component {
     catGenerator.Cats = Cats;
     this.setState({catGenerator: catGenerator});
   }
+
   render() {
     let Cats = this.state.catGenerator.Cats;
 
