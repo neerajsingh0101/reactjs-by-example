@@ -1,7 +1,7 @@
 {
-  "name": "react-flux",
+  "name": "reactjs-by-example-react-redux",
   "version": "0.0.1",
-  "description": "ReactJS Router and Flux",
+  "description": "ReactJS and Redux",
   "scripts": {
     "start": "node server.js",
     "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register --require ./test/setup.js",

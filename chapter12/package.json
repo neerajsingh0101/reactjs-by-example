@@ -1,7 +1,7 @@
 {
-  "name": "reactjs-by-example",
+  "name": "reactjs-by-example-flux",
   "version": "0.0.1",
-  "description": "Social Media Tracker.",
+  "description": "ReactJS with Flux.",
   "repository": "https://github.com/bigbinary/reactjs-by-example",
   "main": "server.js",
   "dependencies": {
