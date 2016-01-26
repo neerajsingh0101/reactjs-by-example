@@ -1,0 +1,37 @@
+.center-text {
+    text-align: center;
+}
+
+.grid {
+    word-wrap: break-word;
+}
+
+.twitter {
+  border-left: 2px solid #55ACEE;
+  position: relative;
+}
+.twitter:before {
+  content: "\f099";
+  font: normal normal normal 20px/1 FontAwesome;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #55ACEE;
+  opacity: .5;
+}
+
+
+.reddit {
+  border-left: 2px solid #FF4500;
+  position: relative;
+}
+.reddit:before {
+  content: "\f1a1";
+  font: normal normal normal 20px/1 FontAwesome;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #FF4500;
+  opacity: .5;
+}
+
