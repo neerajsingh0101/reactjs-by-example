@@ -1,7 +1,7 @@
-react-flux
+react-relay-graphql
 ===========
 
-Example of Flux, using redux
+Example of Relay and GraphQL
 
 ### Usage
 
