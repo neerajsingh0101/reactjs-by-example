@@ -22,8 +22,12 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: [ 'babel' ],
+        loader: ['babel-loader'],
         exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react', 'stage-0'],
+          plugins: ["transform-object-rest-spread", 'transform-function-bind']
+        },
         include: __dirname
       },
       {test: /\.css$/, loader: "style-loader!css-loader"},
