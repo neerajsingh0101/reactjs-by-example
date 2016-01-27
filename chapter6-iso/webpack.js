@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 
 module.exports = {
@@ -14,11 +13,6 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    new BowerWebpackPlugin({
-      modulesDirectories: ["./app/bower_components"],
-      searchResolveModulesDirectories: true,
-      excludes: /.*\.less/
-    }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"

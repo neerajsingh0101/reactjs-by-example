@@ -46,7 +46,6 @@
   },
   "dependencies": {
     "bootstrap-webpack": "0.0.3",
-    "bower-webpack-plugin": "^0.1.8",
     "btoa": "^1.1.2",
     "font-awesome-webpack": "0.0.3",
     "immutable": "^3.7.6",
