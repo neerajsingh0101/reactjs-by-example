@@ -8,7 +8,7 @@ import DeliveryDetails from './delivery_details';
 import Confirmation from './confirmation';
 import Success from './success';
 import ModalAlertTimeout from './modals/modal_alert_timeout'
-import "babel-core/polyfill";
+import "object-assign";
 
 var BookStore = React.createClass({
   getInitialState() {
