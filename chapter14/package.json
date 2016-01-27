@@ -31,6 +31,9 @@
   "homepage": "https://github.com/bigbinary/reactjs-by-example",
   "dependencies": {
     "exports-loader": "^0.6.2",
+    "express-graphql": "^0.4.5",
+    "graphql": "^0.4.14",
+    "graphql-relay": "^0.3.6",
     "imports-loader": "^0.6.5",
     "instagram-node": "^0.5.8",
     "react": "^0.14.0",

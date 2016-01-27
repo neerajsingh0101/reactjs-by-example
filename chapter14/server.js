@@ -12,12 +12,15 @@ var client = new Twitter({
   access_token_secret: config.twitter_access_token_secret
 });
 
+var graphqlHTTP = require('express-graphql');
 var app = new (require('express'))();
 var port = 3000
 
 var compiler = webpack(webpack_config);
 app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: webpack_config.output.publicPath}));
 app.use(webpackHotMiddleware(compiler));
+
+app.use('/graphql', graphqlHTTP({ schema: {}, graphiql: true }));
 
 app.get('/tweets.json', function (req, res) {
   console.log(req.query.username);
