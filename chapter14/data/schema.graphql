@@ -1,0 +1,13 @@
+interface Node {
+  id: ID!
+}
+
+type Query {
+  node(id: ID!): Node
+  tweet: Tweet
+}
+
+type Tweet implements Node {
+  id: ID!
+  content: String
+}
