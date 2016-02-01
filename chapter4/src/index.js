@@ -1,5 +1,4 @@
 import React from 'react';
-import App from './App';
+import BookStore from './BookStore';
 
-console.log(App);
-React.render(<App />, document.getElementById('root'));
+React.render(<BookStore />, document.getElementById('root'));
