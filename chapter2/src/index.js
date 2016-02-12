@@ -1,8 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import App from './BookStore';
-
-
+import App from './App';
 
 var data = [{ "when": "2 minutes ago",
               "who": "Jilaal Dupre",
