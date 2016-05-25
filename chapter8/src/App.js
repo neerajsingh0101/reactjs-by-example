@@ -1,4 +1,4 @@
-require("font-awesome-webpack");
+//require("font-awesome-webpack");
 require("whatwg-fetch");
 
 import React  from 'react';
