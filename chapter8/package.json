@@ -48,6 +48,7 @@
     "bootstrap-webpack": "0.0.3",
     "bower-webpack-plugin": "^0.1.8",
     "btoa": "^1.1.2",
+    "csso": "^2.1.1",
     "font-awesome-webpack": "0.0.3",
     "jquery": "^2.1.4",
     "react": "^0.14.5",
