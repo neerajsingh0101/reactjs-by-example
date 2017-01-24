@@ -268,7 +268,7 @@ var Success = React.createClass({
           Thank you for shopping with us {this.props.data.fullName}.
         </h2>
         <h4>
-          You will soon get {this.props.data.selectedBooks.join(", ")} at {this.props.data.shippingAddress} in approrximately {numberOfDays} days.
+          You will soon get {this.props.data.selectedBooks.join(", ")} at {this.props.data.shippingAddress} in approximately {numberOfDays} days.
         </h4>
       </div>
     );
